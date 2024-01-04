@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pnpm i
+chmod +x ./scripts/install/playwright-browsers
+./scripts/install/playwright-browsers

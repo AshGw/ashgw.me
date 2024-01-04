@@ -1,0 +1,8 @@
+FROM ashgw/node:latest
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y \
+    && echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc \ 
+    && rustup default stable \ 
+    && source ~/.zshrc 
+
+RUN cargo install just 

@@ -1,0 +1,15 @@
+{
+  "name": "ashgw site",
+  "dockerFile": "Dockerfile",
+  "postCreateCommand": "chmod +x ./scripts/dev-container/post-create && ./scripts/dev-container/post-create",
+  "postStartCommand": "chmod +x ./scripts/dev-container/post-start && ./scripts/dev-container/post-start",
+  // this below just allows to access browsers from within the container
+  "runArgs": [
+    "--net",
+    "host",
+    "-e",
+    "DISPLAY=host.docker.internal:0",
+    "-v",
+    "/tmp/.X11-unix:/tmp/.X11-unix"
+  ]
+}
