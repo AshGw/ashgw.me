@@ -26,6 +26,7 @@
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@types/uuid": "^9.0.7",
+    "dotenv": "^16.3.1",
     "eslint": "^8",
     "eslint-config-next": "^14.0.4",
     "husky": "^8.0.3",
@@ -36,10 +37,10 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.2.9",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.5.4",
+    "@nextui-org/react": "^2.2.9",
     "framer-motion": "^10.17.4",
     "next": "^14.0.4",
     "postcss": "^8",
