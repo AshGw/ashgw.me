@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import StyledMDX from '@/app/components/mdx/styled-mdx';
 import { getBlogPosts } from '@/app/(pages)/blog/content';
-import { MetaDataAttributes } from '@/app/(pages)/blog/types';
+import { MetaDataAttributes } from '@/app/(pages)/blog/_types';
 
 type Slug = {
   slug: string;
