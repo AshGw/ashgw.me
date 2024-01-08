@@ -8,12 +8,12 @@ type Slug = {
   pathSlug: string;
 };
 
-export async function generateMetadata(
-  params: Slug
-): Promise<MetaDataAttributes | undefined> {
-  let post = getBlogPosts().find(
-    (post) => post.filenameSlug === params.pathSlug
-  );
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<MetaDataAttributes | undefined> {
+  let post = getBlogPosts().find((post) => post.filenameSlug === params.slug);
   if (!post) {
     return;
   }
@@ -55,11 +55,26 @@ function formatDate(date: string) {
   return `${fullDate} (${formattedDate})`;
 }
 
-export default function Blog(params: Slug) {
-  let post = getBlogPosts().find((post) => post?.filenameSlug === 'go-shit');
+export default function Blog({ params }: { params: { slug: string } }) {
+  let post = getBlogPosts().find((post) => post?.filenameSlug === params.slug);
+
+  /////////////////////////////////
   console.log('nikommmmk');
   console.log(post?.filenameSlug);
-  console.log(params.pathSlug);
+  console.log(params.slug);
+  const fs = require('fs');
+
+  // Assuming 'filenameSlug' and 'pathSlug' are strings
+  const logText = `
+    nikommmmk
+    ${post?.filenameSlug}
+    ${params.slug}
+  `;
+  // Specify the file path where you want to save the logs
+  const filePath = 'logfile.txt';
+  // Use fs.writeFile to write the logs to the file
+  fs.writeFile(filePath, logText, () => {});
+  /////////////////////////////////
 
   if (!post) {
     notFound();
