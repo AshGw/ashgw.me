@@ -31,18 +31,5 @@ function getMDXData(dir: string): Array<BlogData> {
 }
 
 export function getBlogPosts(): Array<BlogData> {
-  return getMDXData(path.join(process.cwd(), 'content'));
+  return getMDXData(path.join(process.cwd(), 'public/content'));
 }
-
-let blogPosts = getBlogPosts();
-
-// Use map to transform each element in the array
-let transformedPosts = blogPosts.map((post) => {
-  let zz = post.parsedContent;
-  let aa = post.filenameSlug;
-  // Your transformation logic here
-  return { zz, aa };
-});
-
-// You can now use transformedPosts as needed
-console.log(transformedPosts);
