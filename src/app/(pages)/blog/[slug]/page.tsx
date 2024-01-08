@@ -58,24 +58,6 @@ function formatDate(date: string) {
 export default function Blog({ params }: { params: { slug: string } }) {
   let post = getBlogPosts().find((post) => post?.filenameSlug === params.slug);
 
-  /////////////////////////////////
-  console.log('nikommmmk');
-  console.log(post?.filenameSlug);
-  console.log(params.slug);
-  const fs = require('fs');
-
-  // Assuming 'filenameSlug' and 'pathSlug' are strings
-  const logText = `
-    nikommmmk
-    ${post?.filenameSlug}
-    ${params.slug}
-  `;
-  // Specify the file path where you want to save the logs
-  const filePath = 'logfile.txt';
-  // Use fs.writeFile to write the logs to the file
-  fs.writeFile(filePath, logText, () => {});
-  /////////////////////////////////
-
   if (!post) {
     notFound();
   }
