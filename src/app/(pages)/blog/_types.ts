@@ -1,22 +1,22 @@
 export type MDXContent = string;
 
-export interface MetaDataAttributes {
+export type MetaDataAttributes = {
   title: string;
   seoTitle: string;
   summary: string;
   firstModDate: string;
   lastModDate: string;
   isPublic: boolean;
-}
+};
 
-export interface MDXData {
+export type MDXData = {
   attributes: MetaDataAttributes;
   body: MDXContent;
   bodyBegin: number;
   frontMatter: string;
-}
+};
 
-export interface BlogData {
+export type BlogData = {
   parsedContent: MDXData;
   filenameSlug: string;
-}
+};
