@@ -9,7 +9,7 @@ export interface MetaDataAttributes {
   isPublic: boolean;
 }
 
-export interface MDXData {                                
+export interface MDXData {
   attributes: MetaDataAttributes;
   body: MDXContent;
   bodyBegin: number;
