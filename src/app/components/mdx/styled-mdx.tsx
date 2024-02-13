@@ -1,9 +1,7 @@
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import { Link } from '@/app/components/reusables/link';
-import { Image, Skeleton } from '@nextui-org/react';
-import { cn } from '@/lib/utils';
-import NextImage from 'next/image';
-import { Divider as _Divider } from '@nextui-org/react';
+import { MDXImage } from './mdx-image';
+import { Divider } from '@/app/components/reusables/divider';
 import CodeBlock from '@/app/components/reusables/code/code-block';
 import {
   Heading2,
@@ -35,28 +33,4 @@ export default function StyledMDX({ source }: { source: string }) {
 }
 function _StyledMDX({ components, ...props }: MDXRemoteProps) {
   return <MDXRemote {...props} components={{ ...components }} />;
-}
-export function Divider() {
-  return <_Divider orientation="horizontal" />;
-}
-type MDXImageProps = {
-  alt: string;
-  width: string;
-  height: string;
-  src: string;
-  className?: string;
-};
-export function MDXImage(props: MDXImageProps) {
-  return (
-    <Skeleton className="flex items-center justify-center brightness-50">
-      <Image
-        as={NextImage}
-        className={cn('rounded-lg', props.className || '')}
-        src={props.src}
-        alt={props.alt}
-        height={props.height}
-        width={props.width}
-      />
-    </Skeleton>
-  );
 }
