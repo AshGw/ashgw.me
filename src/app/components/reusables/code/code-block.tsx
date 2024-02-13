@@ -1,6 +1,8 @@
 // react-syntax-highlighter has no types
 /* eslint-disable */
 // @ts-nocheck
+'use client';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import rust from 'react-syntax-highlighter/dist/cjs/languages/prism/rust';
@@ -33,7 +35,17 @@ export default function CodeBlock({
   copy = true,
 }: Props) {
   return (
-    <div
+    <motion.div
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      transition={{
+        duration: 0.3,
+        ease: 'easeInOut',
+      }}
       className={cn(
         'mx-2 relative rounded-2xl !bg-black p-4 shadow-lg',
         className
@@ -59,6 +71,6 @@ export default function CodeBlock({
       >
         {code}
       </SyntaxHighlighter>
-    </div>
+    </motion.div>
   );
 }
