@@ -20,13 +20,10 @@ tags:
   The variety of features bundled with it is a massive time saver, it's super
   easy & fast to create animations that would have otherwise been a migraine to
   implement. I've been playing with it for the past couple of days, so here are
-  a couple of use cases that are suitable for it
+  a couple of use cases where I'll be using it in the future
 </C>
-<H2>Case I</H2>
+<H2>Case 1</H2>
 <C>Starting off with a simple fade in on view a component.</C>
-
-<FramerMotionFadeInComponent />
-
 <H3>The Traditional Approach</H3>
 <C>
   This involves creating CSS styles for fading, handling state changes, and
@@ -197,6 +194,8 @@ const FadingText: React.FC = () => {
   language="tsx"
   showLineNumbers={true}
 />
+<C>Resulting in</C>
+<FramerMotionFadeInComponent />
 <C>
   A bit cumbersome for a subtle fade-in effect, look how much of work that took,
   now I'll be doing the same except this time with
@@ -221,7 +220,7 @@ const FramerMotionFadeInComponent: React.FC = () => {
 
 <C>
   Now all I have to do is to turn any HTML element into a motion element A.K.A
-  juice it up 💉 💪 and slap on the animations needed, in this case it's on the
+  juice it up 💉 💪 and slap on the needed animation, in this case it's on the
   component's surrounding **``div``**
 </C>
 <Code
@@ -255,7 +254,7 @@ const FramerMotionFadeInComponent: React.FC = () => {
   showLineNumbers={true}
 />
 <S3 />
-<H2>Case II </H2>
+<H2>Case 2 </H2>
 <C>
   Creating this **`YeetMe`** component would have been really hard with plain
   CSS & JS
