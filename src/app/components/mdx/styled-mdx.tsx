@@ -10,7 +10,7 @@ import {
 } from '@/app/components/reusables/headers';
 import { Spacer1, Spacer2, Spacer3 } from '@/app/components/reusables/spacers';
 import { TextContent } from '@/app/components/reusables/content';
-
+import FramerMotionFadeInComponent from '../../../../public/blogs/featured-components/framer-motion-fade-in';
 export default function StyledMDX({ source }: { source: string }) {
   return (
     <_StyledMDX
@@ -27,6 +27,7 @@ export default function StyledMDX({ source }: { source: string }) {
         C: TextContent,
         L: Link,
         D: Divider,
+        ...featuredComponents,
       }}
     ></_StyledMDX>
   );
@@ -34,3 +35,7 @@ export default function StyledMDX({ source }: { source: string }) {
 function _StyledMDX({ components, ...props }: MDXRemoteProps) {
   return <MDXRemote {...props} components={{ ...components }} />;
 }
+
+const featuredComponents = {
+  FramerMotionFadeInComponent: FramerMotionFadeInComponent,
+};

@@ -10,6 +10,8 @@ import python from 'react-syntax-highlighter/dist/cjs/languages/prism/python';
 import typescript from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript';
 import go from 'react-syntax-highlighter/dist/cjs/languages/prism/go';
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash';
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
 import oneDark from 'react-syntax-highlighter/dist/cjs/styles/prism/one-dark';
 import CopyButton from './copy-code';
 import { Skeleton } from '../../ui/skeleton';
@@ -20,10 +22,13 @@ SyntaxHighlighter.registerLanguage('python', python);
 SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('typescript', typescript);
 SyntaxHighlighter.registerLanguage('go', go);
+SyntaxHighlighter.registerLanguage('tsx', tsx);
+SyntaxHighlighter.registerLanguage('css', css);
 
 export type CodeBlockProps = {
   language: string;
   code: string;
+  id?: string;
   showLineNumbers?: boolean;
   className?: string;
   copy?: boolean;
@@ -34,6 +39,7 @@ export default function CodeBlock({
   language,
   showLineNumbers,
   className,
+  id,
   copy = true,
 }: CodeBlockProps) {
   const visible = {
@@ -51,6 +57,7 @@ export default function CodeBlock({
   return (
     <Suspense fallback={<Skeleton />}>
       <motion.div
+        id={id}
         animate={{
           scale: 1,
           opacity: 1,
