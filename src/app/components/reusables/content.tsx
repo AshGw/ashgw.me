@@ -14,7 +14,7 @@ export function TextContent({ children }: { children: React.ReactNode }) {
         duration: 0.3,
         ease: 'easeInOut',
       }}
-      className="p-2 mx-2 font-normal dimmed-3"
+      className="p-2 my-1 mx-2 font-normal dimmed-3"
     >
       {children}
     </motion.p>

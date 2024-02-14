@@ -1,41 +1,15 @@
 'use client';
 import { motion } from 'framer-motion';
 
-export default function MyComponent() {
+export default function YeetMe() {
   return (
-    <div className="rounded-md flex flex-col space-y-10 justify-center items-center  h-svh w-full ">
-      <YeetMe />
-      <Line />
-      <YeetMe />
+    <div className="flex justify-center items-center py-2">
+      <YeetButton />
     </div>
   );
 }
 
-export function Line() {
-  return (
-    <div
-      style={{
-        height: '100%',
-        width: '1px',
-        position: 'relative',
-        backgroundColor: 'transparent',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          width: '1px',
-          top: '0px',
-          background: 'linear-gradient(rgb(130, 78, 220), rgb(130, 78, 220))',
-          transition: 'height 2s ease-out 0s',
-          height: '100%',
-        }}
-      ></div>
-    </div>
-  );
-}
-
-function YeetMe() {
+function YeetButton() {
   const initial = {
     opacity: 0,
     borderRadius: 0,
@@ -65,9 +39,10 @@ function YeetMe() {
   return (
     <motion.button
       layout
+      viewport={{ once: true }}
       className="flex justify-center items-center origin-center bg-gradient-to-r from-purple-500 via-indigo-500 to-pink-500 w-80 h-80"
       initial={initial}
-      animate={animate}
+      whileInView={animate}
       transition={transition}
       whileHover={whileHover}
       drag
@@ -83,9 +58,10 @@ function YeetMe() {
     >
       <motion.div
         layout
+        viewport={{ once: true }}
         className="flex justify-center items-center origin-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-80 h-80"
         initial={initial}
-        animate={animate}
+        whileInView={animate}
         transition={transition}
         whileHover={whileHover}
         whileDrag={whileDrag}

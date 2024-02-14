@@ -71,7 +71,7 @@ export default function CodeBlock({
           ease: 'easeInOut',
         }}
         className={cn(
-          'mx-2 relative rounded-2xl !bg-black p-4 shadow-lg',
+          'mx-2 my-2 relative rounded-2xl !bg-black p-4 shadow-lg',
           className
         )}
       >

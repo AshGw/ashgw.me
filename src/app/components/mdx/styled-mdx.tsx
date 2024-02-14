@@ -11,6 +11,7 @@ import {
 import { Spacer1, Spacer2, Spacer3 } from '@/app/components/reusables/spacers';
 import { TextContent } from '@/app/components/reusables/content';
 import FramerMotionFadeInComponent from '../../../../public/blogs/featured-components/framer-motion-fade-in';
+import YeetMe from '../../../../public/blogs/featured-components/yeet-me';
 export default function StyledMDX({ source }: { source: string }) {
   return (
     <_StyledMDX
@@ -38,4 +39,5 @@ function _StyledMDX({ components, ...props }: MDXRemoteProps) {
 
 const featuredComponents = {
   FramerMotionFadeInComponent: FramerMotionFadeInComponent,
+  YeetMe: YeetMe,
 };

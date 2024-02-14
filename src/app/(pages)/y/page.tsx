@@ -20,7 +20,6 @@ const FramerMotionFadeInComponent: React.FC = () => {
       >
         <FadingText />
       </motion.div>
-      <div className="max-h-max max-w-max overflow-y h-[10000px]">aze</div>
     </div>
   );
 };
@@ -29,7 +28,11 @@ export default FramerMotionFadeInComponent;
 
 const FadingText: React.FC = () => {
   return (
-    <h1 className=" text-4xl font-bold bg-gradient-to-r from-teal-500 to-indigo-500 text-transparent bg-clip-text ">
+    <h1
+      className=" text-4xl font-bold
+     bg-gradient-to-r from-teal-500 to-indigo-500 
+     text-transparent bg-clip-text "
+    >
       I&apos;m Fading in
     </h1>
   );
