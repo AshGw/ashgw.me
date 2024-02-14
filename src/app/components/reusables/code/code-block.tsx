@@ -51,15 +51,16 @@ export default function CodeBlock({
   return (
     <Suspense fallback={<Skeleton />}>
       <motion.div
-        viewport={{ once: true }}
-        whileInView={{
+        animate={{
+          scale: 1,
           opacity: 1,
         }}
         initial={{
+          scale: 0.8,
           opacity: 0,
         }}
         transition={{
-          duration: 0.3,
+          duration: 0.2,
           ease: 'easeInOut',
         }}
         className={cn(
