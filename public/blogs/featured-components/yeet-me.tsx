@@ -9,7 +9,7 @@ export default function YeetMe() {
   );
 }
 
-function YeetButton() {
+export function YeetButton() {
   const initial = {
     opacity: 0,
     borderRadius: 0,

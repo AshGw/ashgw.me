@@ -17,13 +17,16 @@ tags:
   I recently stumbled upon
   <L href="https://www.framer.com/motion/">Framer Motion</L>
   and let me tell you, it's a game-changer when it comes to animations in React.
-  The variety of features bundled with it is a massive time saver, now it's
-  super easy to make animations that would have otherwise been a migraine to
-  implement manually. Here are a couple of cases where one might use it
+  The variety of features bundled with it is a massive time saver, it's super
+  easy & fast to create animations that would have otherwise been a migraine to
+  implement. I've been playing with it for the past couple of days, so here are
+  a couple of use cases that are suitable for it
 </C>
 <H2>Case I</H2>
-<C>Let's start with a simple example: fading in a component on view.</C>
+<C>Starting off with a simple fade in on view a component.</C>
+
 <FramerMotionFadeInComponent />
+
 <H3>The Traditional Approach</H3>
 <C>
   This involves creating CSS styles for fading, handling state changes, and
@@ -257,7 +260,9 @@ const FramerMotionFadeInComponent: React.FC = () => {
   Creating this **`YeetMe`** component would have been really hard with plain
   CSS & JS
 </C>
+
 <YeetMe />
+
 <C>Here's the code for it </C>
 <Code
   code={`import { motion } from 'framer-motion';
@@ -330,9 +335,8 @@ export default function YeetMe() {
 />
 
 <C>
-  These are just a couple of examples I've been playing with for the past couple
-  of days , the library offers more features and options for creating
-  sophisticated animations. You can check out the
+  These are just a couple of examples , the library offers more features and
+  options for creating sophisticated animations. You can check out the
   <L href="https://www.framer.com/motion/introduction/">docs</L> for more info, it's
   well written, I enjoyed reading it nonetheless.
 </C>

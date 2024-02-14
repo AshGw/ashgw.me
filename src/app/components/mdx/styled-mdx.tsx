@@ -10,8 +10,11 @@ import {
 } from '@/app/components/reusables/headers';
 import { Spacer1, Spacer2, Spacer3 } from '@/app/components/reusables/spacers';
 import { TextContent } from '@/app/components/reusables/content';
-import FramerMotionFadeInComponent from '../../../../public/blogs/featured-components/framer-motion-fade-in';
-import YeetMe from '../../../../public/blogs/featured-components/yeet-me';
+import {
+  YeetMe,
+  FramerMotionFadeInComponent,
+} from '@/app/components/blog-mentions/framer-motion';
+
 export default function StyledMDX({ source }: { source: string }) {
   return (
     <_StyledMDX
