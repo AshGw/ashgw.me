@@ -1,0 +1,23 @@
+name: check all
+
+on:
+  workflow_run:
+    workflows:
+      - lint
+      - test
+    types:
+      - completed
+
+concurrency:
+  group: Release
+  cancel-in-progress: false
+
+jobs:
+  check:
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: re-actors/alls-green@release/v1
+        id: all-green
+        with:
+          jobs: ${{ toJSON(needs)}}

@@ -1,9 +1,17 @@
-name: test
+name: lint job 
 
 on:
+  push:
+    branches:
+      - main
+      - prod-preview
   pull_request:
-  workflow_dispatch:
-  workflow_call:
+    branches:
+      - main
+      - prod-preview
+    types:
+      - opened
+      - synchronize
 
 jobs:
   lint:
