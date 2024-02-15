@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+      - name: Set up .env
+        run: echo '${{ secrets.ENV_VARS }}' >> .env.local
       - name: Building & tagging
         run: docker build -t ashgw/mysite:latest .
       - name: Login
