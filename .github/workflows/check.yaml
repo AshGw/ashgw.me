@@ -1,0 +1,34 @@
+name: check
+
+on:
+  push:
+    branches:
+      - main
+      - prod-preview
+  pull_request:
+    branches:
+      - main
+      - prod-preview
+    types:
+      - opened
+      - synchronize
+
+concurrency:
+  group: Release
+  cancel-in-progress: false
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+  test:
+    uses: ./.github/workflows/test.yml
+
+  check:
+    if: always()
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: re-actors/alls-green@release/v1
+        id: all-green
+        with:
+          jobs: ${{ toJSON(needs)}}

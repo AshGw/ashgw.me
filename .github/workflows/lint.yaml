@@ -1,14 +1,9 @@
 name: test
 
 on:
-  push:
-    branches:
-      - main
-      - prod-preview
   pull_request:
-    branches:
-      - main
-      - prod-preview
+  workflow_dispatch:
+  workflow_call:
 
 jobs:
   lint:
