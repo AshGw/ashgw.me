@@ -1,4 +1,4 @@
-name: lint job
+name: lint
 
 on:
   push:
