@@ -1,17 +1,9 @@
 name: lint
 
 on:
-  push:
-    branches:
-      - main
-      - prod-preview
   pull_request:
-    branches:
-      - main
-      - prod-preview
-    types:
-      - opened
-      - synchronize
+  workflow_dispatch:
+  workflow_call:
 
 jobs:
   lint:

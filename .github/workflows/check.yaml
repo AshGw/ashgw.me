@@ -1,15 +1,27 @@
 on:
-  workflow_run:
-    workflows: ['test', 'lint']
+  push:
     branches:
       - main
-      - prod-preview
-    types:
-      - completed
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: Release
+  cancel-in-progress: false
 
 jobs:
+  test-check:
+    uses: ./.github/workflows/tests.yml
+  lint-check:
+    uses: ./.github/workflows/lint.yml
+
   check:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs:
+      - test-check
+      - lint-check
     runs-on: ubuntu-latest
     steps:
       - uses: re-actors/alls-green@release/v1
