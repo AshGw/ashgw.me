@@ -87,7 +87,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-  check:
+  all-good:
     if: always()
     needs:
       - lint
