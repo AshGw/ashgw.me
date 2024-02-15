@@ -1,10 +1,15 @@
 on:
-  workflow_run:
-    workflows:
-      - lint
-      - test
+  push:
+    branches:
+      - main
+      - prod-preview
+  pull_request:
+    branches:
+      - main
+      - prod-preview
     types:
-      - completed
+      - opened
+      - synchronize
 
 concurrency:
   group: Release
@@ -13,6 +18,7 @@ concurrency:
 jobs:
   check:
     if: always()
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
       - uses: re-actors/alls-green@release/v1
