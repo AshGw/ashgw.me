@@ -1,24 +1,15 @@
 on:
-  push:
-    branches:
-      - main
-      - prod-preview
-  pull_request:
+  workflow_run:
+    workflows: ['test', 'lint']
     branches:
       - main
       - prod-preview
     types:
-      - opened
-      - synchronize
-
-concurrency:
-  group: Release
-  cancel-in-progress: false
+      - completed
 
 jobs:
   check:
-    if: always()
-    needs: [lint, test]
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: re-actors/alls-green@release/v1
