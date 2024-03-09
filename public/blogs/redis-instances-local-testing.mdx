@@ -22,8 +22,16 @@ tags:
 </C>
 <H2>Solution</H2>
 <C>
+  The whole idea is: you need to have some 
+   global singleton object or  a settings loading class that loads configs or whatever 
+   you deem fit for your app to determine 
+   if you're running in dev or prod whatever you do, just have it switch between
+   local development redis connections and prod ones, for local redis you'd need Docker
+   , no one runs redis servers directly anyway
+   
+  <S3/>
   I'll be using Python for this demo with <L href="https://fastapi.tiangolo.com/">FastAPI</L> as a 
-  framework and <L href="https://python-poetry.org/">Poetry</L> as the package manager, 
+  framework,  
   but it doesn't matter, the core concept remains the same regardless of the stack being used.
   <S />
   pre-requisites: 
@@ -31,7 +39,7 @@ tags:
   - \-  Docker & Compose 
 
   <S2 />
-  These are the basic endpoints that are rate-limited
+  These are the basic rate limited endpoints
 </C>
 
 <Code
@@ -46,15 +54,15 @@ tags:
   language="python"
   showLineNumbers={false}
 />
-<C>where if you curl any of these endpoints once a minute you should get </C>
+<C>Where if you curl any of these endpoints once every 20 secs you should get </C>
 <Code
   code={`➜  curl http://localhost:8000/limited-2
-{"detail":"you'll see me once a minute"}  
+{"detail":"you'll see me once every 20 seconds"}  
 `}
   language="bash"
   showLineNumbers={false}
 />
-<C>Whereas if you curl any of these endpoints twice a minute you should get</C>
+<C>Whereas if you curl any of these endpoints twice per 20s you should get</C>
 <Code
   code={`➜  curl http://localhost:8000/limited-2
 {"detail":"Too Many Requests"}  
@@ -121,7 +129,7 @@ async def lifespan(_app: FastAPI) -> AsyncGenerator[None, None]:
 
 async def limiter_dependency(req: Request, res: Response) -> None:
     if req.url.path in RATE_LIMITED_PATHS:
-        await RateLimiter(times=2, minutes=1).__call__(req, res)
+        await RateLimiter(times=1, seconds=20).__call__(req, res)
 
 
 api = FastAPI(
@@ -159,7 +167,7 @@ if __name__ == "__main__":
   language="bash"
   showLineNumbers={false}
 />
-<C>here's the **`redis.conf`** file</C>
+<C>Here's the **`redis.conf`** file</C>
 <Code
   code={`bind 0.0.0.0
 requirepass be1bd008f6f7d353bdf4d941c3ee6ed2
@@ -177,7 +185,7 @@ protected-mode no
   more about all the config options
   <L href="https://redis.io/docs/management/config-file">here</L>
   <S3 />
-  To actually run it mfs need a Dockerfile:
+  To actually run it you'll need a Dockerfile:
 </C>
 
 <Code
@@ -203,7 +211,7 @@ language="docker"
 showLineNumbers={false}
 />
 
-<C>you can run this directly with Docker but I prefer to use **``docker-compose``** instead</C>
+<C>You can run this directly with Docker but I prefer to use **``docker-compose``** instead</C>
 
 <Code
   code={`version: "3"
@@ -230,7 +238,7 @@ volumes: # optional
   language="yaml"
   showLineNumbers={false}
 />
-<C>if your run compose now with</C>
+<C>If you run compose now with</C>
 <Code
   code={`docker-compose up 
 `}
@@ -306,7 +314,7 @@ volumes: # optional
   showLineNumbers={false}
 />
 
-<C>now if you run compose again:</C>
+<C>Now if you run compose again:</C>
 <Code
   code={`➜  redis-limiter git:(main) docker-compose up  
 [+] Building 0.0s (0/0)                                                                                                                 docker:default
