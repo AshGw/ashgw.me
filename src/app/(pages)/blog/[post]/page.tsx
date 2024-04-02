@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getBlogPosts, getBlogPost } from '../content';
+import { getBlogPosts, getBlogPost } from '../../../../lib/mdx/content';
 import { getSiteName } from '@/lib/funcs/site-name';
 import { pub } from '@/lib/env';
 import LoadingScreen from '@/app/components/reusables/loading-screen';
