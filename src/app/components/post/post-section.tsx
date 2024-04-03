@@ -7,7 +7,7 @@ import type { PostData } from '@/lib/types/mdx';
 import { Badge } from '@/app/components/ui/badge';
 import { CreationDate } from './creation-date';
 
-export default function BlogSection({ post }: { post: PostData }) {
+export default function PostSection({ post }: { post: PostData }) {
   return (
     <MediumSection>
       <H1 id={post.parsedContent.attributes.title}>

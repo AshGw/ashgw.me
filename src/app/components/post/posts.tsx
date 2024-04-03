@@ -1,7 +1,7 @@
 'use client';
 import type { PostData } from '@/lib/types/mdx';
 import type { ButtonHTMLAttributes } from 'react';
-import BlogPostCard from '@/app/components/blog/blog-card';
+import PostCard from '@/app/components/post/post-card';
 import { ChevronDown } from 'lucide-react';
 import { CheckCheck } from 'lucide-react';
 import { useState } from 'react';
@@ -21,15 +21,15 @@ const NoMoreImTiredBoss: React.FC<
   );
 };
 
-export default function BlogPosts({ blogPosts }: { blogPosts: PostData[] }) {
+export default function Posts({ posts }: { posts: PostData[] }) {
   const firstLoadVisibleNum = 2;
   const perLoadVisibleNum = 1;
   const [visibleNum, setVisibleNum] = useState<number>(firstLoadVisibleNum);
-  const loadMore = visibleNum <= blogPosts.length;
+  const loadMore = visibleNum <= posts.length;
 
   return (
     <main>
-      {blogPosts
+      {posts
         .sort((b1, b2) => {
           if (
             new Date(b1.parsedContent.attributes.firstModDate) >
@@ -56,7 +56,7 @@ export default function BlogPosts({ blogPosts }: { blogPosts: PostData[] }) {
               delay: index * 0.1,
             }}
           >
-            <BlogPostCard blogData={post}></BlogPostCard>
+            <PostCard postData={post}></PostCard>
           </motion.div>
         ))}
       <div id="more" className="flex items-center justify-center m-14">

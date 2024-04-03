@@ -5,7 +5,7 @@ import { getBusinessPosts, getBusinessPost } from '@/lib/mdx/content';
 import { getSiteName } from '@/lib/funcs/site-name';
 import { pub } from '@/lib/env';
 import LoadingScreen from '@/app/components/reusables/loading-screen';
-import BlogSection from '@/app/components/blog/blog-section';
+import PostSection from '@/app/components/post/post-section';
 import Footer from '@/app/components/footer/footer';
 
 type RouteParams = {
@@ -85,7 +85,7 @@ export default async function Blog({ params }: RouteParams) {
     return (
       <Suspense fallback={<LoadingScreen />}>
         <main className="pt-5">
-          <BlogSection post={post} />
+          <PostSection post={post} />
         </main>
         <div className="py-10"></div>
         <Footer />
