@@ -3,11 +3,11 @@ import { Heading1 as H1 } from '@/app/components/reusables/headers';
 import { isSameMonthAndYear } from '@/lib/funcs/dates';
 import { MediumSection } from '@/app/components/reusables/sections';
 import BackUpTop from '@/app/components/reusables/back-up-top';
-import type { BlogData } from '@/lib/types/mdx';
+import type { PostData } from '@/lib/types/mdx';
 import { Badge } from '@/app/components/ui/badge';
 import { CreationDate } from './creation-date';
 
-export default function BlogSection({ post }: { post: BlogData }) {
+export default function BlogSection({ post }: { post: PostData }) {
   return (
     <MediumSection>
       <H1 id={post.parsedContent.attributes.title}>

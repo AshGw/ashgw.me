@@ -1,9 +1,9 @@
-import { BlogData } from '@/lib/types/mdx';
+import { PostData } from '@/lib/types/mdx';
 import Link from 'next/link';
 import { formatDate } from '@/lib/funcs/dates';
 import { BLOG_URI } from '@/lib/constants';
 
-export default function BlogPostCard({ blogData }: { blogData: BlogData }) {
+export default function BlogPostCard({ blogData }: { blogData: PostData }) {
   if (
     !blogData.parsedContent.attributes.isReleased ||
     blogData.parsedContent.attributes.isSequel

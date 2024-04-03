@@ -1,5 +1,5 @@
 'use client';
-import type { BlogData } from '@/lib/types/mdx';
+import type { PostData } from '@/lib/types/mdx';
 import type { ButtonHTMLAttributes } from 'react';
 import BlogPostCard from '@/app/components/blog/blog-card';
 import { ChevronDown } from 'lucide-react';
@@ -21,7 +21,7 @@ const NoMoreImTiredBoss: React.FC<
   );
 };
 
-export default function BlogPosts({ blogPosts }: { blogPosts: BlogData[] }) {
+export default function BlogPosts({ blogPosts }: { blogPosts: PostData[] }) {
   const firstLoadVisibleNum = 2;
   const perLoadVisibleNum = 1;
   const [visibleNum, setVisibleNum] = useState<number>(firstLoadVisibleNum);

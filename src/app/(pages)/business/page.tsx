@@ -1,9 +1,11 @@
-export default function Hi() {
-  return (
-    <>
-      <div className="flex flex-col justify-center items-center">
-        <div className="">UUUh fuck dis hsit</div>
-      </div>
-    </>
-  );
+'use client';
+import { useEffect } from 'react';
+import LoadingScreen from '../blog/loading';
+
+export default function Redirect() {
+  useEffect(() => {
+    window.location.href = '/business/services';
+  }, []);
+
+  return <LoadingScreen></LoadingScreen>;
 }
