@@ -85,7 +85,7 @@ export default async function Blog({ params }: RouteParams) {
     return (
       <Suspense fallback={<LoadingScreen />}>
         <main className="pt-5">
-          <PostSection post={post} />
+          <PostSection post={post} forBusiness={true} />
         </main>
         <div className="py-10"></div>
         <Footer />

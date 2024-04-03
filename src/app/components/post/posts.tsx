@@ -9,21 +9,9 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Footer from '@/app/components/footer/footer';
 
-const NoMoreImTiredBoss: React.FC<
-  ButtonHTMLAttributes<HTMLButtonElement>
-> = () => {
-  return (
-    <div className="flex flex-col items-center justify-center -mb-12">
-      <CheckCheck className="mt-5 cursor-default" />
-      <div className="py-10"></div>
-      <Footer />
-    </div>
-  );
-};
-
 export default function Posts({ posts }: { posts: PostData[] }) {
-  const firstLoadVisibleNum = 2;
-  const perLoadVisibleNum = 1;
+  const firstLoadVisibleNum = 5;
+  const perLoadVisibleNum = 2;
   const [visibleNum, setVisibleNum] = useState<number>(firstLoadVisibleNum);
   const loadMore = visibleNum <= posts.length;
 
@@ -76,3 +64,15 @@ export default function Posts({ posts }: { posts: PostData[] }) {
     </main>
   );
 }
+
+const NoMoreImTiredBoss: React.FC<
+  ButtonHTMLAttributes<HTMLButtonElement>
+> = () => {
+  return (
+    <div className="flex flex-col items-center justify-center -mb-12">
+      <CheckCheck className="mt-5 cursor-default" />
+      <div className="py-10"></div>
+      <Footer />
+    </div>
+  );
+};
