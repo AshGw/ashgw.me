@@ -8,6 +8,10 @@ alias l:= lint
 alias b:= build
 alias rn := reincarnate
 
+DEFAULT_PORT := "3000"
+COMPOSE_PORT := "6969"
+NGROK_DOMAIN := "saved-duckling-subtle.ngrok-free.app"
+
 @help:
     just --list
 
@@ -18,7 +22,6 @@ alias rn := reincarnate
     pnpm i
     pnpm exec playwright install
     pnpm hooks
-
 
 
 @serve:
@@ -48,17 +51,23 @@ alias rn := reincarnate
 
 @u:
     docker-compose up
+    
 @d:
     docker-compose down
 
+@ngrok:
+    ngrok http --domain={{NGROK_DOMAIN}} {{COMPOSE_PORT}}
 
 @patch:
+    git add .
     npx changelogen@latest --release --push --patch 
 
 @minor:
+    git add .
     npx changelogen@latest --release --push --minor 
 
 @major:
+    git add .
     npx changelogen@latest --release --push --major 
 
 @reincarnate:
