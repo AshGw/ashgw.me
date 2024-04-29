@@ -9,15 +9,22 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Footer from '@/app/components/footer/footer';
 
-export default function Posts({ posts }: { posts: PostData[] }) {
+type PostsParams = { posts: PostData[]; taggedPostsFileNames?: string[] };
+
+export default function Posts({ posts, taggedPostsFileNames }: PostsParams) {
   const firstLoadVisibleNum = 5;
-  const perLoadVisibleNum = 2;
+  const perLoadVisibleNum = 3;
   const [visibleNum, setVisibleNum] = useState<number>(firstLoadVisibleNum);
   const loadMore = visibleNum <= posts.length;
-
+  let filteredPosts: PostData[] = posts;
+  if (taggedPostsFileNames && taggedPostsFileNames.length > 0) {
+    filteredPosts = posts.filter((post) =>
+      taggedPostsFileNames.includes(post.filename)
+    );
+  }
   return (
     <main>
-      {posts
+      {filteredPosts
         .sort((b1, b2) => {
           if (
             new Date(b1.parsedContent.attributes.firstModDate) >
@@ -33,7 +40,7 @@ export default function Posts({ posts }: { posts: PostData[] }) {
             key={post.filename}
             initial={{
               opacity: 0,
-              y: -200, // y: index % 2 == 0 ? -200 : 200 , push for 5 when blogs are 20+
+              y: -200,
             }}
             animate={{
               opacity: 1,
@@ -64,7 +71,6 @@ export default function Posts({ posts }: { posts: PostData[] }) {
     </main>
   );
 }
-
 const NoMoreImTiredBoss: React.FC<
   ButtonHTMLAttributes<HTMLButtonElement>
 > = () => {
