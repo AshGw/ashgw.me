@@ -15,13 +15,15 @@ export default function Posts({ posts, taggedPostsFileNames }: PostsParams) {
   const firstLoadVisibleNum = 5;
   const perLoadVisibleNum = 3;
   const [visibleNum, setVisibleNum] = useState<number>(firstLoadVisibleNum);
-  const loadMore = visibleNum <= posts.length;
+
   let filteredPosts: PostData[] = posts;
   if (taggedPostsFileNames && taggedPostsFileNames.length > 0) {
     filteredPosts = posts.filter((post) =>
       taggedPostsFileNames.includes(post.filename)
     );
   }
+  const loadMore = visibleNum <= filteredPosts.length;
+
   return (
     <main>
       {filteredPosts
@@ -56,14 +58,11 @@ export default function Posts({ posts, taggedPostsFileNames }: PostsParams) {
         ))}
       <div id="more" className="flex items-center justify-center m-14">
         {loadMore ? (
-          <Link href={'#more'}>
-            <ChevronDown
-              onClick={() => {
-                setVisibleNum(visibleNum + perLoadVisibleNum);
-              }}
-              className="mt-5 animate-bounce cursor-pointer"
-            />
-          </Link>
+          <LoadMore
+            setVisible={setVisibleNum}
+            visNum={visibleNum}
+            perLoadVisNum={perLoadVisibleNum}
+          />
         ) : (
           <NoMoreImTiredBoss />
         )}
@@ -80,5 +79,24 @@ const NoMoreImTiredBoss: React.FC<
       <div className="py-10"></div>
       <Footer />
     </div>
+  );
+};
+
+type LoadMoreProps = {
+  setVisible: (num: number) => void;
+  visNum: number;
+  perLoadVisNum: number;
+};
+
+const LoadMore: React.FC<LoadMoreProps> = (props) => {
+  return (
+    <Link href={'#more'}>
+      <ChevronDown
+        onClick={() => {
+          props.setVisible(props.visNum + props.perLoadVisNum);
+        }}
+        className="mt-5 animate-bounce cursor-pointer"
+      />
+    </Link>
   );
 };

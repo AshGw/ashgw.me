@@ -13,7 +13,7 @@ export const nextJS = {
 };
 
 export const pub = {
-  SITE_URL_PROD: process.env.SITE_URL_PROD as string,
-  SITE_URL_DEV: process.env.SITE_URL_DEV as string,
+  SITE_URL_PROD: 'https://ashgw.net',
+  SITE_URL_DEV: 'http://localhost:3000',
   EMAIL: process.env.EMAIL as string,
 };
