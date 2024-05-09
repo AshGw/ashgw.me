@@ -58,6 +58,12 @@ export function LeftNav() {
       <div className="flex space-x-12">
         <Link
           className="nav-link-shadow  dimmed-3 font-semibold average-transition  hover:average-translate hover:text-white"
+          href="/"
+        >
+          Home
+        </Link>
+        <Link
+          className="nav-link-shadow  dimmed-3 font-semibold average-transition  hover:average-translate hover:text-white"
           href="/services"
         >
           Services
@@ -85,9 +91,11 @@ export function RightNav() {
         <SourceCodeButton href="https://github.com/ashgw/mysite" />
       </div>
       <div className=" glowsup hidden sm:block">
-        <Button className="w-full" variant={'navbar'}>
-          Contact
-        </Button>
+        <Link href="/contact">
+          <Button className="w-full" variant={'navbar'}>
+            Contact
+          </Button>
+        </Link>
       </div>
     </div>
   );
@@ -137,9 +145,11 @@ export function DropDownNav() {
         </Link>
       </div>
       <div className=" glowsup">
-        <Button className="w-full" variant={'navbarMin'}>
-          Contact
-        </Button>
+        <Link href="/contact">
+          <Button className="w-full" variant={'navbar'}>
+            Contact
+          </Button>
+        </Link>
       </div>
     </motion.div>
   );
