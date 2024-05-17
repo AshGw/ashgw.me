@@ -29,7 +29,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@types/eslint": "^8.56.1",
     "@types/jest": "^29.5.11",
-    "@types/mdx": "^2.0.10",
+    "@types/mdx": "^2.0.13",
     "@types/node": "^20.11.17",
     "@types/react": "^18",
     "@types/react-dom": "^18",
