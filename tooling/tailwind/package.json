@@ -1,0 +1,15 @@
+{
+  "name": "@ashgw/tailwind-config",
+  "version": "0.0.0",
+  "main": "tailwind.config.ts",
+  "license": "GPL-3.0-only",
+  "files": [
+    "tailwind.config.ts",
+    "postcss.ts"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.30",
+    "tailwindcss": "^3.3.4"
+  }
+}

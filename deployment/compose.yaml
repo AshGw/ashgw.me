@@ -4,7 +4,7 @@ services:
     build:
       context: ../
       dockerfile: deployment/dockerfile
-    container_name: mysite
+    container_name: www
     ports:
       - '3000:3000'
     restart: always
