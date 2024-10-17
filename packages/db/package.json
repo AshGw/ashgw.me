@@ -1,5 +1,5 @@
 {
-	"name": "@jobflow/db",
+	"name": "@ashgw/db",
 	"version": "0.1.0",
 	"main": "./src/index.ts",
 	"types": "./src/index.ts",
