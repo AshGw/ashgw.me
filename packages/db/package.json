@@ -9,7 +9,6 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
-		"@jobflow/env-validator": "*",
 		"@prisma/client": "5.19.1"
 	},
 	"devDependencies": {

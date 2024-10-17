@@ -39,10 +39,10 @@
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@ashgw/eslint-config": "workspace:*",
+    "@ashgw/prettier-config": "workspace:*",
+    "@ashgw/tailwind-config": "workspace:*",
+    "@ashgw/tsconfig": "workspace:*",
     "@types/react": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
