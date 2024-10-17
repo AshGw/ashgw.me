@@ -1,0 +1,7 @@
+{
+	"extends": "@jobflow/tsconfig/base.json",
+	"include": ["src/*"],
+	"compilerOptions": {
+		"module": "CommonJS"
+	}
+}

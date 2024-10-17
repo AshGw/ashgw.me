@@ -14,8 +14,6 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@ashgw/api": "workspace:*",
-    "@ashgw/auth": "workspace:*",
     "@ashgw/db": "workspace:*",
     "@ashgw/ui": "workspace:*",
     "@ashgw/validators": "workspace:*",
