@@ -19,12 +19,21 @@
     /** Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
+    "alwaysStrict": true,
     "checkJs": true,
+    "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true,
 
     /** Transpile using Bundler (not tsc) */
     "module": "Preserve",
     "moduleResolution": "Bundler",
-    "noEmit": true
+    "noEmit": true,
+    /** Other */
+
+    "noImplicitOverride": true,
+    "noUnusedParameters": false,
+    "experimentalDecorators": true,
+    "noEmitOnError": true
   },
   "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }
