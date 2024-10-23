@@ -14,8 +14,11 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@ashgw/api": "workspace:*",
+    "@ashgw/auth": "workspace:*",
     "@ashgw/db": "workspace:*",
     "@ashgw/ui": "workspace:*",
+    "@ashgw/validators": "workspace:*",
     "@t3-oss/env-nextjs": "^0.11.1",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",

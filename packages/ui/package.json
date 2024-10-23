@@ -54,5 +54,5 @@
     "react": "catalog:react18",
     "zod": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ashgw/prettier-config"
 }

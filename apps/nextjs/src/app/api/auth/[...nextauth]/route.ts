@@ -5,7 +5,7 @@ import { handlers, isSecureContext } from "@ashgw/auth";
 
 export const runtime = "edge";
 
-const EXPO_COOKIE_NAME = "_ashgw-expo-redirect-state";
+const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
 const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
 
 /**
