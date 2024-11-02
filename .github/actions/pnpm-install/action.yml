@@ -12,6 +12,9 @@ runs:
       uses: buildjet/setup-node@v4
       with:
         node-version: ${{ inputs.nodeVersion }}
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 9
 
     - name: Install dependencies
       shell: bash
