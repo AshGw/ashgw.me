@@ -80,7 +80,8 @@ export default async function RootLayout({
         <NavBar />
         <Providers>{children}</Providers>
       </body>
-      <GoogleAnalytics gaId="G-7BBQ5SWDCD" />
+      <GoogleAnalytics gaId={process.env.GA_ID as string} />
+      {/* TODO: change this actually when monorepo issue gets solved*/}
     </html>
   );
 }

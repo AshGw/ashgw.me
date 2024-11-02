@@ -1,0 +1,10 @@
+name: 'Setup Environment Variables'
+description: 'Sets up the .env.local file from GitHub Secrets'
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up .env
+      shell: bash
+      run: |
+        echo '${{ secrets.ENV_VARS }}' >> .env.local
+        echo '${{ secrets.GA_ID }}' >> .env.local  # TODO: change this
