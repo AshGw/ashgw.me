@@ -1,18 +1,9 @@
 ci:
   - changed-files:
-      - '.github/**'
+      - any-glob-to-any-file: .github/**
 
 Documentation:
   - changed-files:
-      - '**/docs/*'
-
-tests changes:
-  - '**/tests/**'
-scripts changes:
-  - '**/scripts/**'
-tooling changes:
-  - '**/tooling/**'
-dependency updates:
-  - '**/package.json'
-  - '**/package-lock.json'
-  - '**/pnpm-lock.lock'
+      - any-glob-to-any-file: docs/**
+feature:
+  - head-branch: ['^feature', 'feature']
