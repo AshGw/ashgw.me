@@ -1,5 +1,3 @@
-name: Assign PR to Opener
-
 on:
   pull_request:
     types: [opened]
