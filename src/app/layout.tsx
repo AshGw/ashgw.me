@@ -1,6 +1,7 @@
 import Providers from '@/app/components/providers/all';
 import { pub } from '@/lib/env';
 import { getSiteName } from '@/lib/funcs/site-name';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Atkinson_Hyperlegible } from 'next/font/google';
 
@@ -79,6 +80,7 @@ export default async function RootLayout({
         <NavBar />
         <Providers>{children}</Providers>
       </body>
+      <GoogleAnalytics gaId="G-7BBQ5SWDCD" />
     </html>
   );
 }
