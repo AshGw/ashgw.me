@@ -1,0 +1,23 @@
+name: Assign
+
+on:
+  # pull_request_target:
+  #   types: [opened]
+  pull_request:
+    branches:
+      - main
+      - prod-preview
+jobs:
+  pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign PR to opener
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          OPENER: ${{ github.event.pull_request.user.login }}
+        run: |
+          curl -H "Authorization: token ${GITHUB_TOKEN}" \
+              -X POST \
+              -d "{\"assignees\": [\"${OPENER}\"]}" \
+              https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/assignees
