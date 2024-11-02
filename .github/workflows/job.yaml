@@ -99,3 +99,26 @@ jobs:
         id: all-green
         with:
           jobs: ${{ toJSON(needs)}}
+
+  assign-and-label-pr:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Assign PR to opener
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          OPENER: ${{ github.event.pull_request.user.login }}
+        run: |
+          curl -H "Authorization: token ${GITHUB_TOKEN}" \
+              -X POST \
+              -d "{\"assignees\": [\"${OPENER}\"]}" \
+              https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/assignees
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Label PR based on commits
+        uses: actions/labeler@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
