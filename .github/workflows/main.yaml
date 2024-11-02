@@ -21,6 +21,7 @@ permissions:
 concurrency:
   group: Release
   cancel-in-progress: false
+
 jobs:
   lint:
     runs-on: ubuntu-20.04
@@ -38,8 +39,7 @@ jobs:
         with:
           env_vars: ${{ secrets.ENV_VARS }}
           ga_id: ${{ secrets.GA_ID }}
-      - name: Install dependencies w/ setup
-        run: pnpm i
+      - uses: ./.github/actions/pnpm-install
       - name: lint
         run: pnpm lint
 
@@ -62,8 +62,7 @@ jobs:
         with:
           env_vars: ${{ secrets.ENV_VARS }}
           ga_id: ${{ secrets.GA_ID }}
-      - name: Install dependencies w/ setup
-        run: pnpm i
+      - uses: ./.github/actions/pnpm-install
       - name: Running code tests
         run: npx jest
 
@@ -79,8 +78,7 @@ jobs:
         with:
           env_vars: ${{ secrets.ENV_VARS }}
           ga_id: ${{ secrets.GA_ID }}
-      - name: Install dependencies
-        run: npm install -g pnpm &&  pnpm install --frozen-lockfile
+      - uses: ./.github/actions/pnpm-install
       - name: Install Playwright Browsers
         run: npx playwright install # issue not resolved with pnpm
       - name: Run Playwright tests
