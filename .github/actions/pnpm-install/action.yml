@@ -14,7 +14,7 @@ runs:
         node-version: ${{ inputs.nodeVersion }}
     - uses: pnpm/action-setup@v2
       with:
-        version: 9
+        version: 8
 
     - name: Install dependencies
       shell: bash
