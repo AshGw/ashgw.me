@@ -19,14 +19,22 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: Release
+  cancel-in-progress: false
 
 jobs:
   lint:
-    name: Lint checks
-    uses: ./.github/workflows/lint.yml
-    secrets: inherit
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/node-pnpm-setup
+      - uses: ./.github/actions/setup-env
+        with:
+          env_vars: ${{ secrets.ENV_VARS }}
+          ga_id: ${{ secrets.GA_ID }}
+      - uses: ./.github/actions/pnpm-install
+      - name: lint
+        run: pnpm lint
 
   test:
     runs-on: ubuntu-20.04
