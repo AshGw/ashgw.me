@@ -1,7 +1,7 @@
 name: 'Node & pnpm'
 description: 'Node and pnpm setup'
 inputs:
-  nodeVersion:
+  node_version:
     description: 'Use node 20+'
     required: false
     default: '20'
@@ -9,12 +9,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v3
     - uses: pnpm/action-setup@v2
       with:
         version: 8
     - name: Node
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ inputs.nodeVersion }}
+        node-version: ${{ inputs.node_version }}
         cache: 'pnpm'
