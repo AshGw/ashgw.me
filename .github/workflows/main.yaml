@@ -43,14 +43,9 @@ jobs:
         node-version: [18, 19, 20]
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: ./.github/actions/node-pnpm-setup
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
       - uses: ./.github/actions/setup-env
         with:
           env_vars: ${{ secrets.ENV_VARS }}
@@ -65,9 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - uses: ./.github/actions/node-pnpm-setup
       - uses: ./.github/actions/setup-env
         with:
           env_vars: ${{ secrets.ENV_VARS }}
