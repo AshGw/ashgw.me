@@ -1,17 +1,17 @@
 name: 'PNPM install'
 description: 'Run pnpm install with node_modules linker and cache enabled'
 inputs:
-  nodeVersion:
+  node_version:
     description: 'Use node 20+'
     required: false
     default: v20.x
 runs:
   using: composite
   steps:
-    - name: Use Node ${{ inputs.nodeVersion }}
+    - name: Use Node ${{ inputs.node_version }}
       uses: buildjet/setup-node@v4
       with:
-        node-version: ${{ inputs.nodeVersion }}
+        node-version: ${{ inputs.node_version }}
     - uses: pnpm/action-setup@v2
       with:
         version: 8

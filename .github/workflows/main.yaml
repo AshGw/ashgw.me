@@ -26,7 +26,7 @@ jobs:
   lint:
     runs-on: ubuntu-20.04
     steps:
-      - uses: ./.github/actions/pnpm-install
+      - uses: ./.github/actions/node-pnpm-setup
       - uses: ./.github/actions/setup-env
         with:
           env_vars: ${{ secrets.ENV_VARS }}
