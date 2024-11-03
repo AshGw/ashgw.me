@@ -27,6 +27,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Node
         uses: actions/setup-node@v3
         with:
@@ -47,6 +50,9 @@ jobs:
         node-version: [18, 19, 20]
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -57,6 +63,7 @@ jobs:
           env_vars: ${{ secrets.ENV_VARS }}
           ga_id: ${{ secrets.GA_ID }}
       - uses: ./.github/actions/pnpm-install
+
       - name: Running code tests
         run: npx jest
 
@@ -72,7 +79,8 @@ jobs:
         with:
           env_vars: ${{ secrets.ENV_VARS }}
           ga_id: ${{ secrets.GA_ID }}
-      - uses: ./.github/actions/pnpm-install
+      - name: Install dependencies
+        run: npm install -g pnpm &&  pnpm install --frozen-lockfile
       - name: Install Playwright Browsers
         run: npx playwright install # issue not resolved with pnpm
       - name: Run Playwright tests
