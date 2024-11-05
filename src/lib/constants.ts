@@ -30,6 +30,9 @@ export const CREATOR = 'Ashref Gwader';
 export const BOOKING_LINK = 'https://cal.com/ashgw';
 
 export const LINKS = {
+  npm: 'https://www.npmjs.com/~ashgw',
+  crates: 'https://crates.io/users/AshGw',
+  pypi: 'https://pypi.org/user/AshGw/',
   keyBase: 'https://keybase.io/ashgw',
   gitHub: 'https://github.com/ashgw',
   x: 'https://x.com/ashgw', // TODO: change this
