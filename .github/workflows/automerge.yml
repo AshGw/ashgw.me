@@ -1,0 +1,51 @@
+name: Auto Merge Pull Request
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled, unlabeled]
+  workflow_dispatch:
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Ensure all status checks pass
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { context, github } = require('@actions/github');
+            const prNumber = context.payload.pull_request.number;
+            const { data: pullRequest } = await github.pulls.get({
+              ...context.repo,
+              pull_number: prNumber,
+            });
+            if (pullRequest.state !== 'open') return;
+            const requiredChecks = ["ci/test", "ci/lint"];
+            for (const check of requiredChecks) {
+              const checkStatus = pullRequest.statuses.find(s => s.context === check);
+              if (!checkStatus || checkStatus.state !== 'success') {
+                core.setFailed(`Required status check ${check} did not pass.`);
+              }
+            }
+
+      - name: Update PR branch (if necessary)
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          git rebase origin/${{ github.event.pull_request.base.ref }}
+
+      - name: Auto-approve if from trusted source
+        if: github.actor == 'dependabot' || github.actor == 'github-actions[bot]'
+        uses: hmarr/auto-approve-action@v2
+
+      - name: Merge pull request
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git merge --no-ff origin/${{ github.event.pull_request.head.ref }}
+          git push origin ${{ github.event.pull_request.base.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
