@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { Button } from '../../ui/button';
 import { RepoSourceCodeButton } from './RepoSourceCodeButton';
+import { navLinks } from './navLinks';
 
 export function RightNav() {
   return (
@@ -10,11 +11,15 @@ export function RightNav() {
         <RepoSourceCodeButton />
       </div>
       <div className="glowsup hidden sm:block">
-        <Link href="/contact">
-          <Button className="w-full" variant={'navbar'}>
-            Contact
-          </Button>
-        </Link>
+        {navLinks
+          .filter(({ name }) => name === 'Contact')
+          .map(({ name, href }) => (
+            <Link key={name} href={href}>
+              <Button className="w-full" variant={'navbar'}>
+                {name}
+              </Button>
+            </Link>
+          ))}
       </div>
     </div>
   );

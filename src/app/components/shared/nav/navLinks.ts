@@ -1,4 +1,5 @@
-type NavLinks = { name: string; href: string; hidden: boolean }[];
+type Name = 'Home' | 'Blog' | 'Services' | 'Contact';
+type NavLinks = { name: Name; href: string; hidden: boolean }[];
 
 export const navLinks: NavLinks = [
   { name: 'Home', href: '/', hidden: false },
