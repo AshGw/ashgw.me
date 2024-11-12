@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { Button } from '../../ui/button';
+import { Text } from './Text';
 import { TypingAnimation } from './TypingAnimation';
 
 export function HeroSection() {
@@ -58,11 +59,11 @@ export function HeroSection() {
               }}
               transition={transition}
             >
-              <TextContent>
+              <Text>
                 Welcome to my corner on the internet, where it serves as my
                 brain dump for a thing or two I learned throughout the years.
                 Have a look around, if you like what you see
-              </TextContent>
+              </Text>
             </motion.div>
           </div>
           <div className="w-full max-w-sm space-y-2">
