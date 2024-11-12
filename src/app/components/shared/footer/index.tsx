@@ -1,6 +1,6 @@
-import CopyRight from './copyright';
+import { CopyRight } from './CopyRight';
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="pb-9">
       <CopyRight />

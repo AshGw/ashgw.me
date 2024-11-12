@@ -5,7 +5,6 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Atkinson_Hyperlegible } from 'next/font/google';
 
-import NavBar from './components/nav/nav';
 import './styles/globals.css';
 
 const font = Atkinson_Hyperlegible({
