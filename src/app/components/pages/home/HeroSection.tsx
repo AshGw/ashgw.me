@@ -1,22 +1,10 @@
-'use client';
-
-import Footer from '@/app/components/footer/footer';
-import { Button } from '@/app/components/ui/button';
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-import Typed from 'typed.js';
 
-export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <Footer />
-    </>
-  );
-}
+import { Button } from '../../ui/button';
+import { TypingAnimation } from './TypingAnimation';
 
-function HeroSection() {
-  const TRANSITION_DURATION: number = 0.3; // secs
+export function HeroSection() {
+  const TRANSITION_DURATION: number = 0.3;
   const TRANSITION_DELAY: number = 0.4;
   const transition = {
     duration: TRANSITION_DURATION,
@@ -56,7 +44,7 @@ function HeroSection() {
                 </span>
               </h1>
               <h1 className="text-5xl md:text-5xl lg:text-6xl/none xl:text-[5rem] font-bold tracking-tighter ">
-                <TypingAnimation></TypingAnimation>
+                <TypingAnimation />
               </h1>
             </motion.div>
             <motion.div
@@ -107,25 +95,5 @@ function HeroSection() {
         </div>
       </div>
     </motion.section>
-  );
-}
-
-function TextContent({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.p
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      transition={{
-        duration: 0.3,
-        ease: 'easeInOut',
-      }}
-      className="p-2 my-1 mx-2 font-normal dimmed-3 max-w-[700px] "
-    >
-      {children}
-    </motion.p>
   );
 }
