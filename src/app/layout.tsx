@@ -1,12 +1,13 @@
-import Providers from '@/app/components/providers/all';
 import { pub } from '@/lib/env';
 import { getSiteName } from '@/lib/funcs/site-name';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Atkinson_Hyperlegible } from 'next/font/google';
 
+import { NavBar } from './components/shared/nav';
 import './styles/globals.css';
 
+// TOOD: regfactor this here
 const font = Atkinson_Hyperlegible({
   subsets: ['latin-ext'],
   weight: ['400', '700'],
@@ -68,11 +69,10 @@ export const metadata: Metadata = {
   category: 'tech',
 };
 
-export default async function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
+}
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className={font.className}>
