@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
-import { navLinks } from '../navLinks';
+import { navLinks } from '../utils/navLinks';
 import { NavElement } from './NavElement';
 
 interface DropDownMenuProps {

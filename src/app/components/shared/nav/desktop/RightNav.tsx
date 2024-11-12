@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 import { Button } from '../../../ui/button';
-import { RepoSourceCodeButton } from '../RepoSourceCodeButton';
-import { navLinks } from '../navLinks';
+import { RepoSourceCodeButton } from '../shared/RepoSourceCodeButton';
+import { navLinks } from '../utils/navLinks';
 
 export function RightNav() {
   return (
