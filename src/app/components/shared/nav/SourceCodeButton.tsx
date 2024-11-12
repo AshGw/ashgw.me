@@ -17,7 +17,7 @@ export function SourceCodeButton({ href }: SourceCodeButtonProps) {
             marginBottom: '3px',
           }}
         />
-      </NextLink>{' '}
+      </NextLink>
     </button>
   );
 }
