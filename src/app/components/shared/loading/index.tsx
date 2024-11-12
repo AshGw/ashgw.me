@@ -1,8 +1,8 @@
-import Loading, { Pixel, type RGB } from 'loading-points';
+import * as loading from 'loading-points';
 
-const glowColor = 'rgb(155, 46, 199)' as RGB;
-const circleSize = '8px' as Pixel;
+const glowColor = 'rgb(155, 46, 199)' as loading.RGB;
+const circleSize = '8px' as loading.Pixel;
 
-export function Loadig() {
-  return <Loading glowColor={glowColor} circleSize={circleSize} />;
+export function Loading() {
+  return <loading.default glowColor={glowColor} circleSize={circleSize} />;
 }
