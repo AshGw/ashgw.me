@@ -1,3 +1,7 @@
-import LoadingScreen from './components/reusables/loading-screen';
-
-export default LoadingScreen;
+export default function LoadingScreen() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <Loading />
+    </div>
+  );
+}
