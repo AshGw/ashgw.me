@@ -1,13 +1,11 @@
+import { REPO_SOURCE } from '@/lib/constants';
 import { GitBranch } from 'lucide-react';
 import NextLink from 'next/link';
 
-interface SourceCodeButtonProps {
-  href: string;
-}
-export function SourceCodeButton({ href }: SourceCodeButtonProps) {
+export function RepoSourceCodeButton() {
   return (
     <button>
-      <NextLink href={href} target="_blank" rel="noopener noreferrer">
+      <NextLink href={REPO_SOURCE} target="_blank" rel="noopener noreferrer">
         <GitBranch
           strokeWidth={'1.5px'}
           size={'20px'}

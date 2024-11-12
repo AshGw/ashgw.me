@@ -61,39 +61,6 @@ export default function NavBar() {
   );
 }
 
-export function LeftNav() {
-  return (
-    <div className="hidden sm:ml-6 sm:block">
-      <div className="flex space-x-12">
-        <Link
-          className="nav-link-shadow dimmed-3 font-semibold average-transition hover:average-translate hover:text-white"
-          href="/"
-        >
-          Home
-        </Link>
-        {/* <Link
-          className="nav-link-shadow dimmed-3 font-semibold average-transition hover:average-translate hover:text-white"
-          href="/services"
-        >
-          Services
-        </Link> */}
-        <Link
-          className="nav-link-shadow dimmed-3 font-semibold average-transition hover:average-translate hover:text-white"
-          href="/blog"
-        >
-          Blog
-        </Link>
-        <Link
-          className="nav-link-shadow dimmed-3 font-semibold average-transition hover:average-translate hover:text-white"
-          href="/about"
-        >
-          About
-        </Link>
-      </div>
-    </div>
-  );
-}
-
 export function RightNav() {
   return (
     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-3">
