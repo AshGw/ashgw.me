@@ -3,6 +3,7 @@ import { getSiteName } from '@/lib/funcs/site-name';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Atkinson_Hyperlegible } from 'next/font/google';
+import type { PropsWithChildren } from 'react';
 
 import { Providers } from './components/providers';
 import { NavBar } from './components/shared/nav';
@@ -70,10 +71,7 @@ export const metadata: Metadata = {
   category: 'tech',
 };
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-}
-export default async function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={font.className}>

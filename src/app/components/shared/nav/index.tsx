@@ -4,7 +4,7 @@ import useToggleDropDownMenu from '@/lib/hooks/useToggleDropDownMenu';
 import { AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-import { Logo } from './Logo';
+import { Logo } from './shared/Logo';
 import { LeftNav } from './desktop/LeftNav';
 import { RightNav } from './desktop/RightNav';
 import { BgOverlay } from './mobile/BgOverlay';
