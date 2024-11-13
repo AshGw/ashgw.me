@@ -1,4 +1,4 @@
-import { Loading } from './components/shared/loading';
+import { Loading } from './components/shared/loading/index';
 
 export default function LoadingScreen() {
   return (
