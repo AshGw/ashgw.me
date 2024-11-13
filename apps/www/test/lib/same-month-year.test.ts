@@ -1,4 +1,4 @@
-import { DateService } from '../../apps/www/src/lib/services/Date.service';
+import { DateService } from '~/lib/services/Date.service';
 
 const defaultTestDate = new Date(2024, 3, 7, 1, 1, 1);
 
