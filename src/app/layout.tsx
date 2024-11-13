@@ -1,4 +1,4 @@
-import { getSiteName } from '@/lib/funcs/site-name';
+import { NamesService } from '@/lib/services/Names.service';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Atkinson_Hyperlegible } from 'next/font/google';
@@ -34,7 +34,10 @@ export const metadata: Metadata = {
   keywords: kw,
   description: description,
   openGraph: {
-    siteName: getSiteName(pub.SITE_URL_PROD) || pub.SITE_URL_PROD,
+    siteName:
+      NamesService.getSiteName({
+        url: pub.SITE_URL_PROD,
+      }) ?? 'ashgw',
     locale: 'en_US',
     publishedTime: '2023-12-01T09:15:00-0401',
     title,
