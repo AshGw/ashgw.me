@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Atkinson_Hyperlegible } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 
+import { env } from '../../env';
 import { Providers } from './components/providers';
 import { NavBar } from './components/shared/nav';
 import './styles/globals.css';
@@ -17,7 +18,7 @@ const font = Atkinson_Hyperlegible({
 const title = 'Ashref Gwader';
 const description =
   'Developer, writer, and self-proclaimed modern day philosopher.';
-const url = new URL(pub.SITE_URL_PROD);
+const url = new URL(env.NEXT_PUBLIC_WWW_URL);
 const kw: string[] = ['Ashref Gwader', 'ashgw', 'blog', 'tech', 'TS', 'Python'];
 
 const postImageWidth = 1200; // in pixels
@@ -25,7 +26,7 @@ const postImageHeight = 630;
 const postImageUrl = `https://via.placeholder.com/${postImageWidth}x${postImageHeight}.png/000000/ffffff/?text=${title}`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(pub.SITE_URL_PROD),
+  metadataBase: new URL(env.NEXT_PUBLIC_WWW_URL),
   title: {
     default: 'Ashref Gwader',
     template: '%s | Ashgw',
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     siteName:
       NamesService.getSiteName({
-        url: pub.SITE_URL_PROD,
+        url: env.NEXT_PUBLIC_WWW_URL,
       }) ?? 'ashgw',
     locale: 'en_US',
     publishedTime: '2023-12-01T09:15:00-0401',
