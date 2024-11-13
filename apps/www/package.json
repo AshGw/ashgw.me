@@ -2,8 +2,10 @@
   "name": "www",
   "version": "1.84.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "next build",
+    "clean": "git clean -xdf .cache .next .turbo node_modules",
     "postbuild": "echo 'next-sitemap'",
     "hooks": "husky install",
     "dev": "next dev",
