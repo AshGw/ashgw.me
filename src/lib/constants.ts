@@ -1,4 +1,4 @@
-import { nextJS, pub } from '@/lib/env';
+import { env } from '@/env';
 
 import { NamesService } from './services/Names.service';
 
@@ -8,8 +8,10 @@ export const BLOG_URI = '/blog';
 export const BLOG_TAG_URI = '/blog/tag';
 export const BLOG_API_URI = '/api/blogs';
 export const SITE_URL =
-  nextJS.NODE_ENV === 'production' ? pub.SITE_URL_PROD : pub.SITE_URL_DEV;
-export const EMAIL = pub.EMAIL;
+  env.NODE_ENV === 'development'
+    ? env.NEXT_PUBLIC_WWW_DEVELOPMENT_URL
+    : env.NEXT_PUBLIC_WWW_PRODUCTION_URL;
+export const EMAIL = env.NEXT_PUBLIC_CONTACT_EMAIL;
 export const Status = {
   OK: 200,
   BAD_REQUEST: 400,
@@ -24,9 +26,10 @@ export const PUBLIC_BLOG_IMAGES_SOURCE =
 
 export const PUBLIC_CONTENT_SOURCE =
   'https://ashgw-blog-public-general.s3.us-east-2.amazonaws.com/';
-export const SITE_NAME = NamesService.getSiteName({
-  url: pub.SITE_URL_PROD,
-});
+export const SITE_NAME =
+  NamesService.getSiteName({
+    url: env.NEXT_PUBLIC_WWW_PRODUCTION_URL,
+  }) ?? '';
 export const REPO_SOURCE = 'https://github.com/ashgw/ashgw.me';
 export const CREATOR = 'Ashref Gwader';
 export const BOOKING_LINK = 'https://cal.com/ashgw';
