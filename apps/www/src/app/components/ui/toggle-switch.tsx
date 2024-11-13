@@ -2,23 +2,34 @@ import React from 'react';
 
 import { cn } from '../../../lib/utils';
 
-interface ToggleSwitchProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ToggleSwitchProps {
   leftButtonText: string;
   rightButtonText: string;
   isToggled: boolean;
   onToggle: (state: boolean) => void;
+  className?: string; // You can keep this to handle the rest of the div's props
 }
 
 export const ToggleSwitch = React.forwardRef<HTMLDivElement, ToggleSwitchProps>(
-  ({ leftButtonText, rightButtonText, isToggled, onToggle, ...rest }, ref) => {
+  (
+    {
+      leftButtonText,
+      rightButtonText,
+      isToggled,
+      onToggle,
+      className,
+      ...rest
+    },
+    ref
+  ) => {
     return (
       <div
-        {...rest}
         ref={ref}
         className={cn(
           'relative flex h-11 min-w-[200px] max-w-xl rounded-full border border-white/20 backdrop-blur-md p-1 font-medium turn-bg-gradient', // Use your gradient class
-          rest.className
+          className
         )}
+        {...rest}
       >
         <div className="relative flex h-full w-full">
           <div
