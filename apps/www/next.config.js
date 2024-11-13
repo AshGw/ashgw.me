@@ -12,6 +12,8 @@ const config = {
       '/blog': ['./public/**/*'],
     },
   },
+  // I talked about deez
+  // https://github.com/ashgw/security-header-middlewares
   headers() {
     return Promise.resolve([
       {
