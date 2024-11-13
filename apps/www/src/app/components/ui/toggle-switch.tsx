@@ -7,7 +7,7 @@ interface ToggleSwitchProps {
   rightButtonText: string;
   isToggled: boolean;
   onToggle: (state: boolean) => void;
-  className?: string; // You can keep this to handle the rest of the div's props
+  className?: string;
 }
 
 export const ToggleSwitch = React.forwardRef<HTMLDivElement, ToggleSwitchProps>(
