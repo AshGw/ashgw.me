@@ -1,12 +1,17 @@
 'use server';
 
-import type { MDXData, PostData } from '@/lib/types/mdx';
 import fm from 'front-matter';
 import { promises as fsPromises } from 'fs';
 import path from 'path';
-import type { MaybeUndefined, Optional } from 'ts-roids';
 
 import { BLOG_CONTENT_PATH, BUSINESS_CONTENT_PATH } from '../constants';
+import type { MDXData, PostData } from './mdx';
+
+// TODO: fix this
+// import type { MaybeUndefined, Optional } from 'ts-roids';
+
+type Optional<T> = T | null;
+type MaybeUndefined<T> = T | undefined;
 
 function parseMDX(content: string): MDXData {
   return fm(content) as MDXData;

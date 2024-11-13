@@ -1,6 +1,6 @@
+import { Button } from '@ashgw/ui/button';
 import { motion } from 'framer-motion';
 
-import { Button } from '../../ui/button';
 import { Text } from './Text';
 import { TypingAnimation } from './TypingAnimation';
 
