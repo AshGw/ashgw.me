@@ -1,4 +1,3 @@
-import { pub } from '@/lib/env';
 import { getSiteName } from '@/lib/funcs/site-name';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
