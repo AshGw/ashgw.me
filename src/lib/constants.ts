@@ -1,6 +1,6 @@
 import { nextJS, pub } from '@/lib/env';
 
-import { getSiteName } from './funcs/site-name';
+import { NamesService } from './services/Names.service';
 
 export const BLOG_CONTENT_PATH = '/public/blogs';
 export const BUSINESS_CONTENT_PATH = '/public/services';
@@ -24,7 +24,9 @@ export const PUBLIC_BLOG_IMAGES_SOURCE =
 
 export const PUBLIC_CONTENT_SOURCE =
   'https://ashgw-blog-public-general.s3.us-east-2.amazonaws.com/';
-export const SITE_NAME = getSiteName(pub.SITE_URL_PROD);
+export const SITE_NAME = NamesService.getSiteName({
+  url: pub.SITE_URL_PROD,
+});
 export const REPO_SOURCE = 'https://github.com/ashgw/ashgw.me';
 export const CREATOR = 'Ashref Gwader';
 export const BOOKING_LINK = 'https://cal.com/ashgw';
