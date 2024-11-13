@@ -12,6 +12,20 @@ const config = {
       '/blog': ['./public/**/*'],
     },
   },
+  productionBrowserSourceMaps: true,
+
+  /** Enables hot reloading for local packages without a build step */
+  transpilePackages: [
+    '@ashgw/api',
+    '@ashgw/auth',
+    '@ashgw/db',
+    '@ashgw/ui',
+    '@ashgw/validators',
+  ],
+
+  /** We already do linting and typechecking as separate tasks in CI */
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
   // I talked about deez
   // https://github.com/ashgw/security-header-middlewares
   headers() {
@@ -89,20 +103,6 @@ const config = {
       },
     ],
   },
-  productionBrowserSourceMaps: true,
-
-  /** Enables hot reloading for local packages without a build step */
-  transpilePackages: [
-    '@ashgw/api',
-    '@ashgw/auth',
-    '@ashgw/db',
-    '@ashgw/ui',
-    '@ashgw/validators',
-  ],
-
-  /** We already do linting and typechecking as separate tasks in CI */
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
 };
 
 export default config;

@@ -49,7 +49,6 @@
     "markdownlint-cli": "0.38.0",
     "dotenv-cli": "^7.4.2",
     "eslint": "catalog:",
-    "jiti": "^2.3.3",
     "prettier": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
@@ -57,7 +56,8 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "ts-roids": "^1.34.0",
-    "webpack": "^5.96.1"
+    "webpack": "^5.96.1",
+    "jiti": "^2.3.3"
   },
   "dependencies": {
     "@ashgw/ui": "workspace:*",
