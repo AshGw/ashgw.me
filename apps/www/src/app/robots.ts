@@ -1,7 +1,7 @@
-import { pub } from '@/lib/env';
 import { MetadataRoute } from 'next';
+import { env } from '~/env';
 
-const SITE_URL = pub.SITE_URL_PROD;
+const SITE_URL = env.NEXT_PUBLIC_WWW_PRODUCTION_URL;
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
