@@ -1,5 +1,4 @@
-import { env } from '@/env';
-
+import { env } from '../env';
 import { NamesService } from './services/Names.service';
 
 export const BLOG_CONTENT_PATH = '/public/blogs';

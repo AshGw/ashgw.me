@@ -1,8 +1,8 @@
-import { Button } from '@/app/components/ui/button';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Fragment } from 'react';
 
+import { Button } from '../../../ui/button';
 import { navLinks } from '../utils/navLinks';
 import { NavElement } from './NavElement';
 

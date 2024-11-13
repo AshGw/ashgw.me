@@ -1,15 +1,15 @@
 'use client';
 
-import useToggleDropDownMenu from '@/lib/hooks/useToggleDropDownMenu';
 import { AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-import { Logo } from './shared/Logo';
+import useToggleDropDownMenu from '../../../../lib/hooks/useToggleDropDownMenu';
 import { LeftNav } from './desktop/LeftNav';
 import { RightNav } from './desktop/RightNav';
 import { BgOverlay } from './mobile/BgOverlay';
 import { DropDownMenu } from './mobile/DropDownMenu';
 import { HamburgerButton } from './mobile/Hamburger';
+import { Logo } from './shared/Logo';
 
 export function NavBar() {
   const [isOpened, toggleMenu] = useToggleDropDownMenu({

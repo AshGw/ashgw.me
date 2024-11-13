@@ -19,7 +19,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["apps/www/src/*"]
     }
   },
   "include": [
@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "test",
     "postcss.config.js",
-    "src/app/components/mdx/styled-mdx.tsx",
+    "apps/www/src/app/components/mdx/styled-mdx.tsx",
     "next.config.js"
   ],
   "exclude": ["node_modules"],
