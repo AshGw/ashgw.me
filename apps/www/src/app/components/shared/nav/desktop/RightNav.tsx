@@ -1,6 +1,6 @@
+import '@ashgw/ui';
 import Link from 'next/link';
 
-import { Button } from '../../../ui/button';
 import { RepoSourceCodeButton } from '../shared/RepoSourceCodeButton';
 import { navLinks } from '../utils/navLinks';
 

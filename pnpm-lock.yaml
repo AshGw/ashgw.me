@@ -72,6 +72,9 @@ importers:
 
   apps/www:
     dependencies:
+      '@ashgw/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@gsap/react':
         specifier: ^2.1.0
         version: 2.1.1
