@@ -1,3 +1,6 @@
+provider "aws" {
+  region = var.s3_aws_region
+}
 
 resource "aws_s3_bucket" "buckets" {
   for_each = { for idx, name in var.bucket_names : idx => name }
