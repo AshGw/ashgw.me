@@ -73,7 +73,7 @@ resource "aws_s3_bucket_policy" "prod" {
       {
         Sid       = "PublicGetObject"
         Effect    = "Allow"
-        Principal = "*"
+        Principal = "*" 
         Action    = [
           "s3:GetObject"
         ]
