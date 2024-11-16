@@ -78,7 +78,7 @@ function HeroSection() {
             >
               <h1 className="text-5xl md:text-5xl lg:text-6xl/none xl:text-[5rem] font-bold tracking-tighter">
                 <span className="dimmed-4">
-                  Hey, I&apos;m <span className="glows">AG</span>
+                  Hey, I&apos;m <span className="glows">Ashref</span>
                 </span>
               </h1>
               <h1 className="text-5xl md:text-5xl lg:text-6xl/none xl:text-[5rem] font-bold tracking-tighter ">
