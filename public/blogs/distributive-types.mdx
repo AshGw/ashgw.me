@@ -1,0 +1,173 @@
+---
+title: Distributive Types
+seoTitle: The unintended side effects of TypeScript's distributive types
+summary: The unintended side effects of TypeScript's distributive types
+isReleased: true
+isSequel: false
+lastModDate: 2024-02-09T08:15:00-0401
+firstModDate: 2024-02-09T08:15:00-0401
+minutesToRead: 10
+tags:
+  - 'typescript'
+  - 'typing'
+---
+
+<C>
+A distributive conditional type in TypeScript is a special feature of conditional types that automatically distributes the condition across each member of a union type. The simplest form of a conditional type looks like this
+<Code
+  code=
+{`type Example<T> = T extends SomeCondition ? TrueType : FalseType;`}
+language="tsx"
+showLineNumbers={false}
+/>
+When the type T is not a union, this works exactly as expected: TypeScript evaluates whether T matches SomeCondition and resolves to either TrueType or FalseType. However, when T is a union type (e.g., string | number), TypeScript distributes the condition across each member of the union. Essentially, it processes each member individually and creates a new union of the results.
+</C>
+
+<H2>
+Example
+</H2>
+<C>
+Suppose you have a simple union type
+<Code
+  code=
+{`type MyUnion = string | number;`}
+language="tsx"
+showLineNumbers={false}
+/>
+Now let's define a conditional type that wraps any type T into an array
+<Code
+  code=
+{`type ToArray<T> = T extends any ? Array<T> : never;`}
+language="tsx"
+showLineNumbers={false}
+/>
+When you apply ToArray to MyUnion, TypeScript doesn't treat MyUnion as a single entity. Instead, it splits the union into its individual members (string and number), applies the condition to each member, and finally combines the results into a new union:
+<Code
+  code=
+{`type Result = ToArray<MyUnion>; // Array<string> | Array<number>`}
+language="tsx"
+showLineNumbers={false}
+/>
+This process of breaking down the union is what makes the conditional type distributive.
+</C>
+<H2>
+Why is this behavior useful?
+</H2>
+<C>
+In many cases, this distribution is exactly what you want. It lets you transform each member of a union type without writing extra boilerplate code. For instance, if you're creating a type that removes a property from every object in a union, you can rely on this distribution to handle each type automatically
+<Code
+  code=
+{`type DistributiveOmit<T, K extends string> = T extends any ? Omit<T, K> : never;`}
+language="tsx"
+showLineNumbers={false}
+/>
+When applied to a union of object types, DistributiveOmit removes the specified property (K) from each object individually
+<Code
+  code=
+{`type ObjectsUnion = { name: string; age: number } | { title: string; age: number };
+type Result = DistributiveOmit<ObjectsUnion, "age">;
+// Result: { name: string } | { title: string }
+`}
+language="tsx"
+showLineNumbers={false}
+/>
+In this example, distribution saves us from manually applying Omit to each member of the union.
+</C>
+<H2>
+The Problem with Distributive Conditional Types
+</H2>
+<C>
+While distributive behavior is often helpful, there are cases where it’s not desirable. Sometimes, you want to treat a union type as a single entity rather than distributing the conditional logic across its members.
+</C>
+<H3>
+Example: Preventing Distribution
+</H3>
+<C>
+Imagine you want to wrap an entire union type in an array type. Using the same ToArray conditional type as before, the result may not be what you expect
+<Code
+  code=
+{`type MyUnion = string | number;
+type Result = ToArray<MyUnion>; // Array<string> | Array<number>
+`}
+language="tsx"
+showLineNumbers={false}
+/>
+Instead of getting a single array type containing both string and number, you end up with a union of arrays. What if you want the entire union to be treated as a single unit, resulting in `Array<string | number>`?
+<S/>
+This is where tuple wrapping comes into play.
+</C>
+<H2>
+Controlling Distribution
+</H2>
+<C>
+TypeScript allows you to control the distribution of conditional types by wrapping the input type T in a tuple ([T]). This simple trick forces TypeScript to treat the type as a single unit instead of distributing over its members.
+</C>
+<H3>
+How it works?
+</H3>
+<C>
+When you wrap a type in a tuple, TypeScript no longer sees it as a raw union but as an object-like structure. This prevents distribution because TypeScript doesn't distribute over complex structures like tuples.
+<S/>
+Here's how you can rewrite the ToArray type to prevent distribution
+<Code
+  code=
+{`type ToArrayNoDistribute<T> = [T] extends [any] ? Array<T> : never;
+`}
+language="tsx"
+showLineNumbers={false}
+/>
+When applied to a union type, this version treats the union as a whole
+<Code
+  code=
+{`type MyUnion = string | number;
+type Result = ToArrayNoDistribute<MyUnion>; // Array<string | number>
+`}
+language="tsx"
+showLineNumbers={false}
+/>
+Instead of distributing the condition over string and number separately, the entire union is wrapped in a single array type.
+</C>
+<H2>
+When to Use Tuple Wrapping
+</H2>
+<C>
+The tuple wrapping technique is useful whenever you want to avoid the default distribution behavior of conditional types. Here are some scenarios where it might come in handy
+<H3>Transforming Union Types as a Whole</H3>
+If you want to apply a transformation to a union type without splitting it into its members, tuple wrapping ensures the type is treated as a single unit.
+<Code
+  code=
+{`type Transform<T> = [T] extends [any] ? { value: T } : never;
+type Result = Transform<string | number>; // { value: string | number }
+`}
+language="tsx"
+showLineNumbers={false}
+/>
+<H3>Avoiding Unexpected Results</H3>
+In some cases, distribution can lead to unexpected or overly complex types. Wrapping with tuples simplifies the behavior.
+<H3>Combining Union Members</H3>
+When you need to merge or combine union members into a single structure, tuple wrapping prevents TypeScript from over-complicating the output.
+</C>
+<H2>Practical Example: Improving Omit with Tuple Wrapping</H2>
+<C>
+A common use case for tuple wrapping is improving utility types like Omit. Without tuple wrapping, Omit distributes over union types, which may not always be desired
+<Code
+  code=
+{`type DistributiveOmit<T, K extends string> = T extends any ? Omit<T, K> : never;
+type ObjectsUnion = { name: string; age: number } | { title: string; age: number };
+type Result = DistributiveOmit<ObjectsUnion, "age">;
+// Result: { name: string } | { title: string }
+`}
+language="tsx"
+showLineNumbers={false}
+/>
+If you want to omit age from the entire union as a whole, tuple wrapping solves the problem
+<Code
+  code=
+{`type NonDistributiveOmit<T, K extends string> = [T] extends [any] ? Omit<T, K> : never;
+type Result = NonDistributiveOmit<ObjectsUnion, "age">;
+// Result: Omit<{ name: string; age: number } | { title: string; age: number }, "age">
+`}
+language="tsx"
+showLineNumbers={false}
+/>
+</C>
