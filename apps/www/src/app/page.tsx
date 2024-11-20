@@ -1,13 +1,10 @@
 import { Fragment } from 'react';
+import { HomePage } from '~/app/components/pages/home';
 
-import { HeroSection } from './components/pages/home/HeroSection';
-import { Footer } from './components/shared/footer';
-
-export default function HomePage() {
+export default function Page() {
   return (
     <Fragment>
-      <HeroSection />
-      <Footer />
+      <HomePage />
     </Fragment>
   );
 }

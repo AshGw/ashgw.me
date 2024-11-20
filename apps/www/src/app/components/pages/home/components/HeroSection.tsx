@@ -1,8 +1,8 @@
 import { Button } from '@ashgw/ui/button';
 import { motion } from 'framer-motion';
 
-import { Text } from './Text';
-import { TypingAnimation } from './TypingAnimation';
+import { Text } from '../Text';
+import { TypingAnimation } from '../TypingAnimation';
 
 export function HeroSection() {
   const TRANSITION_DURATION: number = 0.3;
