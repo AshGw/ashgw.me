@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { navLinks } from '../utils/navLinks';
+import { navLinks } from '../../utils/navLinks';
 
 export function LeftNav() {
   return (

@@ -4,8 +4,8 @@ import { AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
 import useToggleDropDownMenu from '../../../../lib/hooks/useToggleDropDownMenu';
-import { LeftNav } from './desktop/LeftNav';
-import { RightNav } from './desktop/RightNav';
+import { LeftNav } from './components/desktop/LeftNav';
+import { RightNav } from './components/desktop/RightNav';
 import { BgOverlay } from './mobile/BgOverlay';
 import { DropDownMenu } from './mobile/DropDownMenu';
 import { HamburgerButton } from './mobile/Hamburger';
