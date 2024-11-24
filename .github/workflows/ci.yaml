@@ -1,27 +1,16 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-      - staging
-  pull_request:
-    branches:
-      - main
-      - staging
-    types:
-      - opened
-      - synchronize
+  workflow_call:
 
 permissions:
-  contents: write
+  contents: read
   issues: write
   pull-requests: write
 
 concurrency:
-  group: Release
-  cancel-in-progress: false
-
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   validate-pr:
     runs-on: ubuntu-latest
