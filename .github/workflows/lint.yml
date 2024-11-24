@@ -2,9 +2,11 @@ name: Lint
 
 on:
   workflow_call:
+
 permissions:
   actions: write
   contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-20.04
