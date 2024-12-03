@@ -88,4 +88,8 @@ const nextConfig = {
   pageExtensions: ['js', 'ts', 'jsx', 'tsx', 'mdx'],
 };
 
+if (process.env.NODE_ENV === 'development') {
+  await setupDevPlatform();
+}
+
 module.exports = nextConfig;
