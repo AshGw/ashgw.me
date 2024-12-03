@@ -23,6 +23,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.6",
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
     "@cspell/dict-cryptocurrencies": "5.0.0",

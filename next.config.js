@@ -1,3 +1,5 @@
+import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -11,7 +13,58 @@ const nextConfig = {
     return [
       {
         source: '/(.*)',
-        headers: securityHeaders,
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: `
+            form-action 'self';
+            frame-ancestors 'none';
+            upgrade-insecure-requests;
+        `
+              .split('\n')
+              .join(''),
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'no-referrer, strict-origin-when-cross-origin',
+          },
+          {
+            key: 'X-Frame-Options', // for older browsers
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+          {
+            key: 'Server',
+            value: 'deez nuts v69.0.1',
+          },
+          {
+            key: 'X-Powered-By',
+            value: 'deez nuts v69.0.1-pro',
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin',
+          },
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'require-corp',
+          },
+        ],
       },
     ];
   },
@@ -36,56 +89,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-const securityHeaders = [
-  {
-    key: 'Content-Security-Policy',
-    value: `
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-`
-      .split('\n')
-      .join(''),
-  },
-  {
-    key: 'Referrer-Policy',
-    value: 'no-referrer, strict-origin-when-cross-origin',
-  },
-  {
-    key: 'X-Frame-Options', // for older browsers
-    value: 'DENY',
-  },
-  {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
-  },
-  {
-    key: 'X-DNS-Prefetch-Control',
-    value: 'on',
-  },
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload',
-  },
-  {
-    key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()',
-  },
-  {
-    key: 'Server',
-    value: 'deez nuts v69.0.1',
-  },
-  {
-    key: 'X-Powered-By',
-    value: 'deez nuts v69.0.1-pro',
-  },
-  {
-    key: 'Cross-Origin-Opener-Policy',
-    value: 'same-origin',
-  },
-  {
-    key: 'Cross-Origin-Resource-Policy',
-    value: 'require-corp',
-  },
-];
