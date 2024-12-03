@@ -1,16 +1,8 @@
-import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-
-const nextConfig = {
-  experimental: {
-    outputFileTracingIncludes: {
-      '/blog': ['./public/**/*'],
-    },
-  },
-
-  headers() {
-    return [
+const nextConfig: NextConfig = {
+  async headers() {
+    return Promise.resolve([
       {
         source: '/(.*)',
         headers: [
@@ -20,9 +12,7 @@ const nextConfig = {
             form-action 'self';
             frame-ancestors 'none';
             upgrade-insecure-requests;
-        `
-              .split('\n')
-              .join(''),
+        `.replace(/\n/g, ''),
           },
           {
             key: 'Referrer-Policy',
@@ -66,8 +56,9 @@ const nextConfig = {
           },
         ],
       },
-    ];
+    ]);
   },
+
   images: {
     remotePatterns: [
       {
@@ -84,12 +75,9 @@ const nextConfig = {
       },
     ],
   },
+
   productionBrowserSourceMaps: true,
   pageExtensions: ['js', 'ts', 'jsx', 'tsx', 'mdx'],
 };
 
-if (process.env.NODE_ENV === 'development') {
-  await setupDevPlatform();
-}
-
-module.exports = nextConfig;
+export default nextConfig;
