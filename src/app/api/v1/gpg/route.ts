@@ -2,8 +2,6 @@ import { PUBLIC_CONTENT_SOURCE } from '@/lib/constants';
 import { NextRequest, NextResponse } from 'next/server';
 import { NewType } from 'ts-roids';
 
-export const runtime = 'edge';
-
 type Key = NewType<'Key', string>;
 type Err = string;
 
