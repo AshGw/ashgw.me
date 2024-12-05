@@ -66,7 +66,7 @@ Remove unused CSS. <L href='https://purgecss.com'>PurgeCSS</L> is good.
 Third-party scripts can introduce performance bottlenecks, so evaluate the necessity of each script.
 </C>
 <C>
- If you're using plain HTML, make sure that critical CSS and JS are loaded first to render meaningful content quickly. Inline critical CSS and ``defer`` non-critical scripts to avoid render-blocking resources
+ If you're using plain HTML, make sure that critical CSS and JS are loaded first to render meaningful content quickly. Inline critical CSS and ``defer`` non-critical scripts to avoid render-blocking resources.
 </C>
 <H3>Images</H3>
 <C>
@@ -99,7 +99,7 @@ And
 Where content is fetched only when it comes into view. Prioritize loading essential elements first, similar to how Netflix or YouTube optimizes their content loading. If you're using React, use `React.lazy` or <L href='https://react.dev/reference/react/Suspense'>`<Suspense/>`</L> component with a fallback lightweight component.
 </C>
 <C>
-Also use dynamic imports. If it's not going to be used right away, why import it. Here's  an example of a  dynamic import with React
+Also use dynamic imports. If it's not going to be used right away, why import it. Here's  an example of a  dynamic import with React.
 </C>
 <Code
   code={`import { useState } from 'react'
@@ -128,7 +128,6 @@ export default function Page() {
   )
 }`}
   language="tsx"
-  showLineNumbers={true}
 />
 <H3>Caching and Memorization</H3>
 <C>
@@ -142,7 +141,6 @@ API calls too, <L href='(https://en.wikipedia.org/wiki/Memoization'>``Next``</L>
   code={`  const res = await fetch('https://api.example.com', {
     next: { revalidate: 3600 }, // Revalidate every hour`}
   language="tsx"
-  showLineNumbers={true}
 />
 <H3>Debounce</H3>
 <C>

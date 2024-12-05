@@ -2,7 +2,7 @@
 title: React Object Destructuring
 seoTitle: Stop Object Destructuring in React with TypeScript
 summary: My eyes hurt when I see it, stop it, it's an anti-pattern
-isReleased: true
+isReleased: false
 isSequel: false
 lastModDate: 2021-12-03T09:15:00-0401
 firstModDate: 2021-12-03T09:15:00-0401
@@ -12,7 +12,7 @@ tags:
   - 'typescript'
   - 'anti-patterns'
 ---
-<C>Do not do this </C>
+<C>Do not do this: </C>
 <Code
   code={`export interface MyComponentProps {
   onClick: () => void;
@@ -37,7 +37,7 @@ export function MyComponent({
   language="tsx"
   showLineNumbers={false}
 />
-<C>And definitely not this </C>
+<C>And definitely not this:</C>
 <Code
   code={`export function MyComponent({
   onClick,,
@@ -60,7 +60,7 @@ export function MyComponent({
   language="tsx"
   showLineNumbers={false}
 />
-<C>You're not in JS land anymore, so instead do this</C>
+<C>You're not in JS land anymore, so instead do this:</C>
 <Code
   code={`export interface MyComponentProps {
   onClick: () => void;
@@ -80,12 +80,12 @@ export function MyComponent(props: MyComponentProps): ReactElement {
   language="tsx"
   showLineNumbers={false}
 />
-<C>Here's why</C>
+<C>Here's why:</C>
 
 <H2>Reason 1: Readability</H2>
 <C>
 The biggest drawback is that it can obscure the readability of a component's signature. When a function has multiple parameters, it is harder to discern the purpose of each parameter.
-This can become even more confusing when ``ReactElement`` is not explicitly defined in an interface or type.
+This can become even more confusing when the props are not explicitly defined in an interface or type.
 </C>
 
 <H2>Reason 2: Performance</H2>

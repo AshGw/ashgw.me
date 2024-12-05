@@ -1,7 +1,7 @@
 ---
 title: Framer Motion
-seoTitle: Supercharge Animations in React with Framer Motion 
-summary: Supercharge animations in React
+seoTitle: I started using framer motion, I think I like it
+summary: I started using framer motion, I think I like it
 isReleased: true
 isSequel: false
 lastModDate: 2020-02-11T09:15:00-0401
@@ -94,7 +94,6 @@ showLineNumbers={true}
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Handle it when in view
     setIsVisible(!isVisible);
   }, [ref]);
 
@@ -180,6 +179,7 @@ const Component: React.FC = () => {
 };
 
 export default Component;
+
 const FadingText: React.FC = () => {
   return (
     <h1 className=" text-4xl font-bold bg-gradient-to-r from-teal-500 to-indigo-500 text-transparent bg-clip-text ">
@@ -191,12 +191,12 @@ const FadingText: React.FC = () => {
   language="tsx"
   showLineNumbers={true}
 />
-<C>Resulting in</C>
+<C>Resulting in:</C>
 <FramerMotionFadeInComponent />
 <C>
   A bit cumbersome for a subtle fade-in effect. Look how much of work that took.
    Now I'll be doing the same except this time with
-  <L href="https://www.framer.com/motion/">Framer Motion</L>
+  <L href="https://www.framer.com/motion/">Framer Motion</L>.
 </C>
 <H3>Using Framer</H3>
 <Code
@@ -263,11 +263,12 @@ const FramerMotionFadeInComponent: React.FC = () => {
 
 <YeetMe />
 
-<C>Here's the code for it </C>
+<C>Here's the code:</C>
 <Code
   code={`import { motion } from 'framer-motion';
 
-export default function YeetMe() {
+export function YeetMe() {
+
   const initial = {
     opacity: 0,
     borderRadius: 0,

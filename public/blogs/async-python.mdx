@@ -6,7 +6,7 @@ isReleased: true
 isSequel: false
 lastModDate: 2020-02-02T09:15:00-0401
 firstModDate: 2020-02-02T09:15:00-0401
-minutesToRead: 7
+minutesToRead: 9
 tags:
   - 'python'
   - 'async'
@@ -21,15 +21,15 @@ So, what's the deal with async functions in Python? We all know they pause execu
 </C>
 <H2>Iterators</H2>
 <C>
-An iterator serves as a programming object that facilitates the systematic traversal of a <L href="https://en.wikipedia.org/wiki/Container_(abstract_data_type)">container</L>, granting access to its elements one at a time. It maintains the state of the traversal, allowing the iterator to pause execution after processing a specific item. To continue, a call to the `next()` method, which is typically named by convention, is made. This call prompts the iterator to resume execution and retrieve the next element in the sequence. This iterative process persists until the iterator reaches the end of the container, and this approach is commonly referred to as lazy evaluation.
+An iterator serves as a programming object that facilitates the systematic traversal of a <L href="https://en.wikipedia.org/wiki/Container_(abstract_data_type)">container</L>, granting access to its elements one at a time. It maintains the state of the traversal, allowing the iterator to pause execution after processing a specific item. To continue, a call to the `next()` method (which is typically named by convention) is made. This call prompts the iterator to resume execution and retrieve the next element in the sequence. This iterative process persists until the iterator reaches the end of the container, and this approach is commonly referred to as lazy evaluation.
 </C>
 <S3/>
 <C>
-The key concepts here are the actions of pausing, resuming, and awaiting the next element. These notions become particularly relevant and meaningful when correlated with the concept of asynchronous functions, the idea of pausing and resuming execution aligns with the asynchronous nature of handling tasks, which allows the program to efficiently manage and switch between various operations without blocking the entire execution flow. The term "await" further emphasizes this waiting aspect, where the program can await the completion of a specific asynchronous task before proceeding, we call this task a ``Future``, more on this <L href="#related-objects">later.</L>
+The key concepts here are the actions of **pausing**, **resuming**, and **awaiting** the next element. These notions become relevant and meaningful when correlated with the concept of asynchronous functions, the idea of pausing and resuming execution aligns with the asynchronous nature of handling tasks, which allows the program to efficiently manage and switch between various operations without blocking the entire execution flow. The term "await" further emphasizes this waiting aspect, where the program can await the completion of a specific asynchronous task before proceeding, we call this task a ``Future`` in Python. More on this <L href="#related-objects">later.</L>
 </C>
 <H2>How Do I Create An Iterator</H2>
 <C>
-To define your own iterator you have to adhere to the iterator <L href='/blog/python-protocols'>protocol</L> meaning you have to define `__iter__` and `__next__` methods
+To define your own iterator you have to adhere to the iterator <L href='/blog/python-protocols'>protocol</L> meaning you have to define `__iter__` and `__next__` dunder methods
 </C>
 <H3>**``__iter__``**</H3>
 <C>
@@ -81,14 +81,14 @@ except StopIteration:
 language="python"
 showLineNumbers={false}
 />
-<C>In this example, the `__iter__` method <L href="https://docs.python.org/2/library/functions.html#open">opens</L> the file, and the `__next__` method reads one line at a time until the end of the file is reached. This approach ensures that only one line is loaded into memory at a time, by only loading parts of the file upon request, the request in this case is the act of calling the `next()` method which makes it memory-efficient, even for large files.</C>
+<C>Here, the `__iter__` method <L href="https://docs.python.org/2/library/functions.html#open">opens</L> the file, and the `__next__` method reads one line at a time until the end of the file is reached. This approach ensures that only one line is loaded into memory at a time, by only loading parts of the file upon request, the request in this case is the act of calling the `next()` method which makes it memory efficient, even for large files.</C>
 <H2>Async Iterators</H2>
 <C>
 The extend the concept of iterators to asynchronous operations. Async iterators implement two key methods:
 </C>
 <H3>**``__aiter__``**</H3>
 <C>
- Similar to its synchronous counterpart, this method returns the async iterator object itself, making it compatible with `async for` loops instead of traditional `for` loops.
+ Similar to its synchronous counterpart, this method returns the async iterator object itself, which makes it compatible with `async for` loops instead of traditional `for` loops.
   </C>
  <H3>**``__anext__``**</H3>
 <C>
@@ -99,11 +99,11 @@ The invocation of `__anext__` involves the use of the `async` and `await` keywor
 </C>
 <H2 id="what-is-an-awaitable?">What Exactly Is An **``awaitable``**</H2>
 <C>
-An ``awaitable`` is an object that can be used with the `await` keyword within an async function. It typically represents an operation that may not be immediately completed, such as an asynchronous task or a <L href="#related-objects">``Future``</L> object. 
+An ``awaitable`` is an object that can be used with the `await` keyword within an async function. It represents an operation that may not be immediately completed, such as an asynchronous task or a <L href="#related-objects">``Future``</L> object. 
 </C>
 <H2>How Do I Define An **``awaitable``**</H2>
 <C>
-Define an object that implements the `__await__()` dunder method which should  return a generator object
+Define an object that implements the `__await__` dunder method which should  return a generator object
 </C>
 <H2>What Are Generators ?</H2>
 <C>
@@ -115,7 +115,7 @@ When encountering the '`yield`' statement, an event occurs: The current state of
 </C>
 <S3/>
 <C>
-Upon calling the generator again, whether through a `for` loop or the `next()` function, the generator resumes execution from where it was paused by the last '`yield`'. This resumption allows the generator to produce the next value in the sequence. This process repeats until the generator function completes or encounters a '`return`' statement.
+Upon calling the generator again, whether through a `for` loop or the `next()` function, the generator resumes execution from where it was paused by the last '`yield`'. This resumption allows the generator to produce the next value in the sequence. This process repeats until the generator function completes or encounters a `return` statement.
 </C>
 <S3/>
 <C>
@@ -143,8 +143,4 @@ showLineNumbers={false}
 <H2 id="related-objects">Related Objects</H2>
 <C>
 I've referred to `Future`, so what's a future ? it's a combination of both `iterable` and `awaitable` , you might have also encountered an `asynciterable`, this is an object that defines and `aiter` method and returns an `asynciterator`. Lastly there's `AsyncGenerator`, just like `Generator` but it actually it inherits from an ``AsyncIterator`` instead of `Ìterator` 
-</C>
-<H2>Read Again</H2>
-<C>
-Seems confusing doesn't it ? 
 </C>
