@@ -6,10 +6,10 @@ import React, { useEffect, useState } from 'react';
 import useToggleDropDownMenu from '../../../../lib/hooks/useToggleDropDownMenu';
 import { LeftNav } from './components/desktop/LeftNav';
 import { RightNav } from './components/desktop/RightNav';
-import { BgOverlay } from './mobile/BgOverlay';
-import { DropDownMenu } from './mobile/DropDownMenu';
-import { HamburgerButton } from './mobile/Hamburger';
-import { Logo } from './shared/Logo';
+import { BgOverlay } from './components/mobile/BgOverlay';
+import { DropDownMenu } from './components/mobile/DropDownMenu';
+import { HamburgerButton } from './components/mobile/Hamburger';
+import { Logo } from './components/shared/Logo';
 
 export function NavBar() {
   const [isOpened, toggleMenu] = useToggleDropDownMenu({

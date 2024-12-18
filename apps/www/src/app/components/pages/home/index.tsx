@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import { Footer } from './../../shared/footer';
 import { HeroSection } from './components/HeroSection';
 

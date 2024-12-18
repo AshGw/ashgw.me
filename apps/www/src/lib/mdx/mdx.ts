@@ -1,6 +1,6 @@
 export type MDXContent = string;
 
-export type MetaDataAttributes = {
+export interface MetaDataAttributes {
   title: string;
   seoTitle: string;
   summary: string;
@@ -10,16 +10,16 @@ export type MetaDataAttributes = {
   isSequel: boolean;
   minutesToRead: string | number;
   tags: string[];
-};
+}
 
-export type MDXData = {
+export interface MDXData {
   attributes: MetaDataAttributes;
   body: MDXContent;
   bodyBegin: number;
   frontMatter: string;
-};
+}
 
-export type PostData = {
+export interface PostData {
   parsedContent: MDXData;
   filename: string;
-};
+}

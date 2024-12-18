@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
-import { CREATOR } from '../../../../lib/constants';
+import { CREATOR } from '~/lib/constants';
 
 export function CopyRight() {
   return (

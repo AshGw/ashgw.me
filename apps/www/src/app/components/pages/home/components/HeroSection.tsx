@@ -1,12 +1,12 @@
 import { Button } from '@ashgw/ui/button';
 import { motion } from 'framer-motion';
 
-import { Text } from '../Text';
-import { TypingAnimation } from '../TypingAnimation';
+import { Text } from './Text';
+import { TypingAnimation } from './TypingAnimation';
 
 export function HeroSection() {
-  const TRANSITION_DURATION: number = 0.3;
-  const TRANSITION_DELAY: number = 0.4;
+  const TRANSITION_DURATION = 0.3;
+  const TRANSITION_DELAY = 0.4;
   const transition = {
     duration: TRANSITION_DURATION,
     delay: TRANSITION_DELAY,

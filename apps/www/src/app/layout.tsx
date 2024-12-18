@@ -74,15 +74,14 @@ export const metadata: Metadata = {
   category: 'tech',
 };
 
-export default async function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={font.className}>
         <NavBar />
         <Providers>{children}</Providers>
       </body>
-      <GoogleAnalytics gaId={process.env.GA_ID as string} />
-      {/* TODO: change this actually when monorepo issue gets solved*/}
+      <GoogleAnalytics gaId={env.GA_ID as string} /> {/* TODO: fix this  */}
     </html>
   );
 }

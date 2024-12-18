@@ -1,7 +1,6 @@
 import { GitBranch } from 'lucide-react';
 import NextLink from 'next/link';
-
-import { REPO_SOURCE } from '../../../../../lib/constants';
+import { REPO_SOURCE } from '~/lib/constants';
 
 export function RepoSourceCodeButton() {
   return (

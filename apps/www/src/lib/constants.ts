@@ -6,6 +6,8 @@ export const BUSINESS_CONTENT_PATH = '/public/services';
 export const BLOG_URI = '/blog';
 export const BLOG_TAG_URI = '/blog/tag';
 export const BLOG_API_URI = '/api/blogs';
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* TOFIX */
 export const SITE_URL =
   env.NODE_ENV === 'development'
     ? env.NEXT_PUBLIC_WWW_DEVELOPMENT_URL

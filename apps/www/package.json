@@ -1,5 +1,5 @@
 {
-  "name": "www",
+  "name": "@ashgw/www",
   "version": "1.84.0",
   "private": true,
   "type": "module",

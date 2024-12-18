@@ -1,7 +1,7 @@
-type HamburgerButtonProps = {
+interface HamburgerButtonProps {
   isOpened: boolean;
   onClick: () => void;
-};
+}
 
 export const HamburgerButton: React.FC<HamburgerButtonProps> = ({
   isOpened,

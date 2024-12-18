@@ -1,6 +1,7 @@
 import { NamesService } from '~/lib/services/Names.service';
 
-const getSiteName = NamesService.getSiteName;
+const getSiteName = NamesService.getSiteName.bind(NamesService);
+
 describe('extractDomainAndTLD', () => {
   test('should extract domain and TLD from a valid URL', () => {
     const url = 'https://www.example.com/path/to/page';

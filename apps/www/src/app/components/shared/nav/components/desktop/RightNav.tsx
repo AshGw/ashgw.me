@@ -1,8 +1,8 @@
 import { Button } from '@ashgw/ui/button';
 import Link from 'next/link';
 
-import { RepoSourceCodeButton } from '../../shared/RepoSourceCodeButton';
 import { navLinks } from '../../utils/navLinks';
+import { RepoSourceCodeButton } from '../shared/RepoSourceCodeButton';
 
 export function RightNav() {
   return (

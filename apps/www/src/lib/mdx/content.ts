@@ -73,7 +73,7 @@ export async function getBlogPost(slug: string): Promise<Optional<PostData>> {
     return null;
   }
   const blogPost: MaybeUndefined<PostData> = blogs.find(
-    (p) => p?.filename === slug
+    (p) => p.filename === slug
   );
   if (blogPost === undefined) {
     return null;
@@ -89,7 +89,7 @@ export async function getBusinessPost(
     return null;
   }
   const blogPost: MaybeUndefined<PostData> = blogs.find(
-    (p) => p?.filename === slug
+    (p) => p.filename === slug
   );
   if (blogPost === undefined) {
     return null;
